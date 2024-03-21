@@ -5,9 +5,12 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Abilities/Teleport")]
 public class Teleport : Ability {
     public int distance;
+    public GameObject shadow;
     public override void Activate(GameObject player)
     {
-        
+        ShadowSpawn(player.transform.position);
+
+
         Vector3 currentPlayerPos = player.transform.position;
         float visina = currentPlayerPos.z;
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -18,6 +21,15 @@ public class Teleport : Ability {
         Vector3 teleportPos = currentPlayerPos + direction.normalized * distance;
 
         player.transform.position = teleportPos;
+    }
+    private void ShadowSpawn(Vector3 pos)
+    {
+        GameObject shadowInstance = Instantiate(shadow, pos, Quaternion.identity);
+
+        // Get the SpriteRenderer component from the instantiated shadow GameObject
+        SpriteRenderer shadowRenderer = shadowInstance.GetComponent<SpriteRenderer>();
+
+        shadowRenderer.sortingOrder = -1;
     }
 }
 

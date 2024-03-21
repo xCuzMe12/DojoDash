@@ -15,5 +15,5 @@ MonoBehaviour:
   name: 
   cooldownTime: 10
   activeTime: 1
-  indicatorPrefab: {fileID: 3389441439581752962, guid: a867633000ffb0849add8a7640d06bb3, type: 3}
   distance: 9
+  shadow: {fileID: 2372573537424907163, guid: aa0190eaca59f99439d4d20403bc47a9, type: 3}
