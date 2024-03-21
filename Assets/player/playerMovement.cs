@@ -12,8 +12,8 @@ public class playerMovement : MonoBehaviour
     private float shootingSpeedMultiplier = 1.5f;
     float speedX, speedY;
     Rigidbody2D rb;
-    private Vector2 movementInput;
-    private Vector2 shootingDirection;
+    [HideInInspector] public Vector2 movementInput;
+    [HideInInspector] public Vector2 shootingDirection;
 
     private bool isBoostActive = false;
     private Shooting shootingScript;

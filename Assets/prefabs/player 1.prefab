@@ -150,6 +150,7 @@ GameObject:
   - component: {fileID: 1337859739124672651}
   - component: {fileID: 2173115186732643507}
   - component: {fileID: 3746354995878152705}
+  - component: {fileID: 1447402067291109916}
   m_Layer: 0
   m_Name: player 1
   m_TagString: Player
@@ -238,6 +239,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3b1f50157f0bd94b84a7a8c338f4bab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bonusSpeedText: {fileID: 0}
+  speed: 0
+  boosted: 0
+  totalBonusSpeed: 0
 --- !u!50 &6687247994224271521
 Rigidbody2D:
   serializedVersion: 4
@@ -290,13 +295,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 50
+  currentHealth: 0
   maxXp: 45
   damage: 3
   bulletSpeed: 13
   speed: 5
   attackSpeed: 0.5
+  maxDamage: 50
+  maxSpeed: 20
+  maxAttackSpeed: 20
   healthBar: {fileID: 0}
   xpBar: {fileID: 0}
+  kills: 0
+  statsDisplay: {fileID: 0}
 --- !u!58 &3746354995878152705
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -332,6 +343,18 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &1447402067291109916
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6614004175828299631}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a062fa6f6d0fc4f4081ba833676b7b6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7189459741731230281
 GameObject:
   m_ObjectHideFlags: 0

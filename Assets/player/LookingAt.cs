@@ -3,6 +3,7 @@ using UnityEngine;
 public class LookingAt : MonoBehaviour
 {
     private Camera mainCam;
+    [HideInInspector]public Vector3 mousePos;
 
     void Start()
     {
@@ -15,7 +16,7 @@ public class LookingAt : MonoBehaviour
         if (mainCam != null)
         {
             // Get mouse position in world coordinates
-            Vector3 mousePos = mainCam.ScreenToWorldPoint(Input.mousePosition);
+            mousePos = mainCam.ScreenToWorldPoint(Input.mousePosition);
 
             // Calculate rotation towards mouse position
             Vector3 direction = mousePos - transform.position;
