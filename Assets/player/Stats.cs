@@ -19,6 +19,7 @@ public class Stats : MonoBehaviour
     public float bulletSpeed;
     public int speed;
     public float attackSpeed;
+    public int BodyDamage;
 
 
     public int maxDamage = 50;
@@ -85,6 +86,7 @@ public class Stats : MonoBehaviour
 
 
     }
+
 
 
     public void TakeDamage(int damage)

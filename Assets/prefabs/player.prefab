@@ -303,6 +303,7 @@ MonoBehaviour:
   bulletSpeed: 13
   speed: 5
   attackSpeed: 0.5
+  BodyDamage: 10
   maxDamage: 50
   maxSpeed: 20
   maxAttackSpeed: 20

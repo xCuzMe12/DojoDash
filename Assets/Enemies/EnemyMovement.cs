@@ -8,9 +8,11 @@ public class EnemyMovement : MonoBehaviour
     public float enemySpeed;
     Rigidbody2D rb;
     public GameObject player;
-    public int health;
+    public int enemyHealth = 15;
+    public int enemyDMG = 5;
 
-    //public GameObject healthText; //to nared se
+    //public GameObject healthText; 
+    //za une mocnejse sam tle dodaji se fje za shooting pa to
 
     void Start()
     {
@@ -23,5 +25,22 @@ public class EnemyMovement : MonoBehaviour
         
         Vector2 direction = (player.transform.position - transform.position).normalized;
         rb.velocity = direction * enemySpeed;
+
+        if (enemyHealth <= 0)
+        {
+            Destroy(gameObject);
+        }
+
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            Stats stats = collision.gameObject.GetComponent<Stats>();
+            stats.TakeDamage(enemyDMG);
+            enemyHealth -= stats.BodyDamage;
+            
+
+        }
     }
 }

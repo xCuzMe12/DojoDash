@@ -128,7 +128,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemySpeed: 3
   player: {fileID: 0}
-  health: 5
+  health: 15
+  enemyDMG: 5
 --- !u!58 &483401069704803234
 CircleCollider2D:
   m_ObjectHideFlags: 0

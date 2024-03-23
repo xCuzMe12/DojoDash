@@ -53,7 +53,7 @@ public class bullet : MonoBehaviour
         if (collision.gameObject.CompareTag("Enemy"))
         {
             EnemyMovement enemyMovement = collision.gameObject.GetComponent<EnemyMovement>();
-            int health = enemyMovement.health;
+            int health = enemyMovement.enemyHealth;
             health -= damage;
             if (health <= 0)
             {
@@ -63,7 +63,7 @@ public class bullet : MonoBehaviour
             }
             else
             {
-                enemyMovement.health = health;  //mors prou cez skript updajtat v drug skript
+                enemyMovement.enemyHealth = health;  //mors prou cez skript updajtat v drug skript
             }
             Destroy(gameObject);
         }
