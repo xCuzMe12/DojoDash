@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7bf27fb176489349b27a99fd878e1d4, type: 3}
   m_Name: TeleportLONG
   m_EditorClassIdentifier: 
-  name: 
+  name: nigga
   cooldownTime: 10
   activeTime: 1
   distance: 9
