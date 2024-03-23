@@ -25,11 +25,7 @@ public class Teleport : Ability {
     private void ShadowSpawn(Vector3 pos)
     {
         GameObject shadowInstance = Instantiate(shadow, pos, Quaternion.identity);
-
-        // Get the SpriteRenderer component from the instantiated shadow GameObject
-        SpriteRenderer shadowRenderer = shadowInstance.GetComponent<SpriteRenderer>();
-
-        shadowRenderer.sortingOrder = -1;
+ 
     }
 }
 
