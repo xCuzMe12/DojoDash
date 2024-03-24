@@ -11,8 +11,8 @@ public class Stats : MonoBehaviour
     public int currentHealth;
 
     public int maxXp;
-    private int currentXp = 0;
-    private int lvl = 1;
+    [HideInInspector]public int currentXp = 0;
+    [HideInInspector]public int lvl = 1;
 
 
     public int damage;

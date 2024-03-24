@@ -4,12 +4,11 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-    public Transform player;
+    //public Transform player;
     public GameObject autofireText;
     public bool autofire = false;
 
 
-    // Start is called before the first frame update
     void Start()
     {
 
@@ -17,10 +16,11 @@ public class CameraController : MonoBehaviour
             autofireText.SetActive(false);
     }
 
-    // Update is called once per frame
+
     void Update()
     {
-        transform.position = new Vector3(player.transform.position.x, player.transform.position.y, transform.position.z);
+        //to mas ce bos kdaj rabu kamero izven player parenta
+        //transform.position = new Vector3(player.transform.position.x, player.transform.position.y, transform.position.z);
         if (Input.GetKeyDown("x"))
         {
             autofire = !autofire; //tko sam switchas bool, CRAZY

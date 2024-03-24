@@ -6,9 +6,9 @@ using UnityEngine;
 public class bullet : MonoBehaviour
 {
     private GameObject player;
-    private Stats stats;
+    [HideInInspector] public Stats stats;
     public float bulletSpeed;
-    int damage;
+    [HideInInspector] public int damage;
 
     private Vector3 mousePos;
     private Camera mainCam;
@@ -50,22 +50,6 @@ public class bullet : MonoBehaviour
     
     void OnCollisionEnter2D(Collision2D collision) 
     {
-        if (collision.gameObject.CompareTag("Enemy"))
-        {
-            EnemyMovement enemyMovement = collision.gameObject.GetComponent<EnemyMovement>();
-            int health = enemyMovement.enemyHealth;
-            health -= damage;
-            if (health <= 0)
-            {
-                Destroy(collision.gameObject);
-                stats.kills++;
-                stats.statsDisplay.Display();
-            }
-            else
-            {
-                enemyMovement.enemyHealth = health;  //mors prou cez skript updajtat v drug skript
-            }
-            Destroy(gameObject);
-        }
+            Destroy(gameObject);     
     }
 }

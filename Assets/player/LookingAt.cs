@@ -3,7 +3,12 @@ using UnityEngine;
 public class LookingAt : MonoBehaviour
 {
     private Camera mainCam;
-    [HideInInspector]public Vector3 mousePos;
+    [HideInInspector] public Vector3 mousePos;
+
+    public float rotationThreshold = 0.2f; // Threshold for significant change in direction
+    public float rotationSpeed = 10f; // Speed of rotation
+
+    private Quaternion targetRotation; // Rotation to smoothly interpolate towards
 
     void Start()
     {
@@ -22,12 +27,14 @@ public class LookingAt : MonoBehaviour
             Vector3 direction = mousePos - transform.position;
             float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
 
-            // Apply rotation only if there's a significant change in direction
-            if (direction.magnitude > 0.2f)
+            // Check if the change in direction is significant
+            if (direction.magnitude > rotationThreshold)
             {
-                Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-                transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * 10f);
+                targetRotation = Quaternion.AngleAxis(angle, Vector3.forward);
             }
+
+            // Smoothly interpolate towards the target rotation
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * rotationSpeed);
         }
     }
 }

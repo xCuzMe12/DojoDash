@@ -43,8 +43,8 @@ public class playerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        
 
+        transform.rotation = Quaternion.identity;
 
         speedX = Input.GetAxisRaw("Horizontal") * speed;
         speedY = Input.GetAxisRaw("Vertical") * speed;
