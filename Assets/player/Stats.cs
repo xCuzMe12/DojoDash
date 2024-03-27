@@ -79,6 +79,7 @@ public class Stats : MonoBehaviour
             xpBar.SetMaxXP(maxXp);
             xpBar.SetXP(currentXp);
             xpBar.LevelDisplay(lvl);
+            GetComponent<SkinChanger>().ChangeSkin(lvl - 1); //pol k jih bo veè si player zbere kerega
         }
 
         
