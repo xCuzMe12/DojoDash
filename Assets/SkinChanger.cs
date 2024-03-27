@@ -31,7 +31,7 @@ public class SkinChanger : MonoBehaviour
         }
 
         sr.sprite = skini[StevilkaSkina];
-        Debug.Log("Skin se zamena v " + skini[StevilkaSkina]);
+
 
     }
 }
