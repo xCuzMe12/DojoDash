@@ -25,7 +25,7 @@ public class SkinChanger : MonoBehaviour
     }
     public void ChangeSkin(int StevilkaSkina)
     {
-        if (StevilkaSkina > skini.Length)
+        if (StevilkaSkina >= skini.Length)
         {
             StevilkaSkina = 0;
         }

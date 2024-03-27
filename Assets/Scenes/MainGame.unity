@@ -1070,6 +1070,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1369681028868302410, guid: aba79a3d9a1a00549a9c7afd82df2d7d, type: 3}
+      propertyPath: maxHealth
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 1369681028868302410, guid: aba79a3d9a1a00549a9c7afd82df2d7d, type: 3}
       propertyPath: knockbackForce
       value: 1
       objectReference: {fileID: 0}
