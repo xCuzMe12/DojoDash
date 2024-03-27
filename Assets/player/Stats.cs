@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Stats : MonoBehaviour
 {
@@ -59,9 +60,8 @@ public class Stats : MonoBehaviour
             currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
         }
         if (currentHealth <= 0) { 
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
             Destroy(gameObject);
-            Debug.Log("You died");
-            //TLE DAS SCENE MANAGER ZA SMRT, MAGAR TO PO KOLOKVIJU
         }
         
 
