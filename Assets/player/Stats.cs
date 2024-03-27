@@ -68,7 +68,7 @@ public class Stats : MonoBehaviour
         //fake metode
         if (Input.GetKeyDown(KeyCode.Space)) {
             TakeDamage(10);
-            GetXp(8);
+            GetXp(50);
         }
 
         if (currentXp >= maxXp)
