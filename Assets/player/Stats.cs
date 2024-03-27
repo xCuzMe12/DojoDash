@@ -20,6 +20,7 @@ public class Stats : MonoBehaviour
     public int speed;
     public float attackSpeed;
     public int BodyDamage;
+    public float knockbackForce;
 
 
     public int maxDamage = 50;
@@ -113,6 +114,20 @@ public class Stats : MonoBehaviour
         }
 
     }
+    //KNOCK BACK
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
 
+            Rigidbody enemyRigidbody = collision.gameObject.GetComponent<Rigidbody>();
+
+            Vector3 knockbackDirection = collision.gameObject.transform.position - transform.position;
+            knockbackDirection.Normalize();
+
+            enemyRigidbody.AddForce(knockbackDirection * knockbackForce, ForceMode.Impulse);
+
+        }
+    }
 
 }

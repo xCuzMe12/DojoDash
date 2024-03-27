@@ -8,7 +8,7 @@ public class playerMovement : MonoBehaviour
 
 
 
-    
+
     private float shootingSpeedMultiplier = 1.5f;
     float speedX, speedY;
     Rigidbody2D rb;
@@ -30,6 +30,8 @@ public class playerMovement : MonoBehaviour
 
     void Start()
     {
+
+
         rb = GetComponent<Rigidbody2D>();
         //da dobis CanFire, importas script
         GameObject point = GameObject.Find("RotatePoint");

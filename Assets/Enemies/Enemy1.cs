@@ -35,9 +35,8 @@ public class EnemyMovement : MonoBehaviour
         }
     }
     //basically vse interactione delas tle
-    private void OnCollisionEnter2D(Collision2D collision)
+    void OnCollisionEnter2D(Collision2D collision)
     {
-        StartCoroutine(UpdateMovementCoroutine());
         if (collision.gameObject.CompareTag("Player"))
         {
             Stats stats = collision.gameObject.GetComponent<Stats>();
@@ -48,9 +47,23 @@ public class EnemyMovement : MonoBehaviour
                 OnDestroy(stats);
 
             }
+            else
+            {
+                //to zrihtej se, knockback, zdej te sam tpja stran - RB.FORCE
+                Vector2 differece = transform.position - collision.transform.position;
+                differece = differece * stats.knockbackForce;
+                transform.position = new Vector2(transform.position.x + differece.x, transform.position.y + differece.y);
+            }
+
+
+
+
+
+
         }
         if (collision.gameObject.CompareTag("Bullet"))
         {
+
             bullet bullet = collision.gameObject.GetComponent<bullet>();
             enemyHealth -= bullet.damage;
             if (enemyHealth <= 0)
@@ -60,6 +73,10 @@ public class EnemyMovement : MonoBehaviour
 
 
             }
+        }
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            StartCoroutine(UpdateMovementCoroutine());
         }
 
         //vsakic k enemy umre klices to metodo
