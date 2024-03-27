@@ -72,7 +72,7 @@ public class Stats : MonoBehaviour
         if (currentXp >= maxXp)
         {
             currentXp -= maxXp;
-            lvl++;
+            lvl++; //TUKI LVL UP
             maxXp += (int)maxXp / 2;
             xpBar.SetMaxXP(maxXp);
             xpBar.SetXP(currentXp);
