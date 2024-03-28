@@ -8,6 +8,8 @@ TagManager:
   - Powerup
   - Bullet
   - SceneLoader
+  - Enemy2
+  - enemyBullet
   layers:
   - Default
   - TransparentFX
