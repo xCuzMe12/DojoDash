@@ -59,9 +59,11 @@ public class Stats : MonoBehaviour
         {
             currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
         }
-        if (currentHealth <= 0) { 
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-            Destroy(gameObject);
+        if (currentHealth <= 0) {
+            GameObject sceneLoader = GameObject.FindWithTag("SceneLoader");
+            LevelLoader skripta = sceneLoader.GetComponent<LevelLoader>();
+            skripta.LoadNextLevel();
+            //DEJ TLE SE DA ZAMENJA SKIN NA CIS TAZADNGA V LISTU, K JE PA KAO K SI MRTU
         }
         
 
