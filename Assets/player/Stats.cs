@@ -82,7 +82,7 @@ public class Stats : MonoBehaviour
             xpBar.SetXP(currentXp);
             xpBar.LevelDisplay(lvl);
             GetComponent<SkinChanger>().ChangeSkin(lvl - 1); //pol k jih bo veè si player zbere kerega
-            GetComponent<AbilitySelect>().SelectAbility(lvl);
+            //GetComponent<AbilitySelect>().SelectAbility(lvl);
         }
 
         

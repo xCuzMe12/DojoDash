@@ -44,10 +44,14 @@ public class AbilitySelect : MonoBehaviour
                 }
                 else
                 {
-                    Debug.Log("Napacen tag ig");
+                    
                     if(hit.collider == null)
                     {
                         Debug.Log("RIP, hit collider = null");
+                    }
+                    if (!hit.collider.CompareTag(targetTag))
+                    {
+                        Debug.Log("Napacen tag ig");
                     }
                 }
             }
