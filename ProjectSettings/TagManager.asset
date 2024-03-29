@@ -10,6 +10,7 @@ TagManager:
   - SceneLoader
   - Enemy2
   - enemyBullet
+  - ShootingPrefab
   layers:
   - Default
   - TransparentFX

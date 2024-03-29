@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+//REPI PAZI - TE 4 OSNOVNI VSI INHERITAJO IZ TEGA, UNI LVL2 UPGRADE PA IZ LVL1 NE IZ TEGA
+
 public class Shooting : MonoBehaviour
 {
     private Camera mainCam;
@@ -46,14 +49,14 @@ public class Shooting : MonoBehaviour
         if (autofire && CanFire)
         {
             CanFire = false;
-            Instantiate(bullet, transform.position + bulletTransform.up * 1f, Quaternion.identity);
+            SpawnBullet(0f);
         }
 
 
         if ((Input.GetMouseButtonDown(0) && CanFire))
         {
             CanFire = false;
-            Instantiate(bullet, transform.position + bulletTransform.up * 1f, Quaternion.identity);
+            SpawnBullet(0f);
         }
 
         //reload
@@ -70,5 +73,10 @@ public class Shooting : MonoBehaviour
 
 
 
+    }
+    void SpawnBullet(float angleOffset)
+    {
+        GameObject newBullet = Instantiate(bullet, transform.position + bulletTransform.up * 1f, Quaternion.identity);
+        newBullet.GetComponent<bullet>().angleOffset = angleOffset;
     }
 }

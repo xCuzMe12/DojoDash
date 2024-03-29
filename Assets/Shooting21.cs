@@ -2,22 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-//UPG1 2VZPOREDNA - letita vzporedno
-public class Shooting11 : MonoBehaviour
+
+//UPG2 OD 2VZPOREDNA - LETITA V TOÈKA, KJER MAS MISKO
+public class Shooting21 : MonoBehaviour
 {
     private Camera mainCam;
     private Vector3 mousePos;
-    [HideInInspector]public GameObject bullet;
-    [HideInInspector]public Transform bulletTransform;
+public GameObject bullet;
+public Transform bulletTransform;
     public bool CanFire;
     private float timer;
     public bool autofire = false;
 
 
-    [HideInInspector]public GameObject player;
+public GameObject player;
     private Stats stats;
 
-    private Shooting shooting;
+    private Shooting11 shooting;
 
 
 
@@ -26,14 +27,14 @@ public class Shooting11 : MonoBehaviour
     {
         mainCam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
         stats = player.GetComponent<Stats>();
-        shooting = GetComponent<Shooting>();
+        shooting = GetComponent<Shooting11>();
 
 
     }
 
     void OnEnable()
     {
-        shooting = GetComponent<Shooting>();
+        shooting = GetComponent<Shooting11>(); //to res pazi
 
         bullet = shooting.bullet;
         bulletTransform = shooting.bulletTransform;
@@ -95,14 +96,13 @@ public class Shooting11 : MonoBehaviour
         Vector3 spawnPosition = transform.position - bulletTransform.right * offsetDistance * 0.8f + bulletTransform.up * 2 * offsetDistance;
         GameObject newBullet = Instantiate(bullet, spawnPosition, Quaternion.identity);
         newBullet.GetComponent<bullet>().angleOffset = angleOffset;
-        newBullet.GetComponent<bullet>().KamStreljati = mousePos - transform.position;
     }
 
     void SpawnBulletR(float angleOffset, float offsetDistance)
     {
-        Vector3 spawnPosition = transform.position + bulletTransform.right * offsetDistance * 0.8f + bulletTransform.up * 2 *offsetDistance;
+        Vector3 spawnPosition = transform.position + bulletTransform.right * offsetDistance * 0.8f + bulletTransform.up * 2 * offsetDistance;
         GameObject newBullet = Instantiate(bullet, spawnPosition, Quaternion.identity);
         newBullet.GetComponent<bullet>().angleOffset = angleOffset;
-        newBullet.GetComponent<bullet>().KamStreljati = mousePos - transform.position;
     }
 }
+

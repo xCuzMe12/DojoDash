@@ -2,22 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-//UPG1 2VZPOREDNA - letita vzporedno
-public class Shooting11 : MonoBehaviour
+public class Shooting12 : MonoBehaviour
 {
     private Camera mainCam;
     private Vector3 mousePos;
-    [HideInInspector]public GameObject bullet;
-    [HideInInspector]public Transform bulletTransform;
+    [HideInInspector] public GameObject bullet;
+    [HideInInspector] public Transform bulletTransform;
     public bool CanFire;
     private float timer;
     public bool autofire = false;
 
 
-    [HideInInspector]public GameObject player;
+    [HideInInspector] public GameObject player;
     private Stats stats;
 
-    private Shooting shooting;
+    private Shooting shooting; 
 
 
 
@@ -61,18 +60,19 @@ public class Shooting11 : MonoBehaviour
         //stel
         if (autofire && CanFire)
         {
+            SpawnBullet(0f);
+            SpawnBullet(30f);
+            SpawnBullet(-30f);
             CanFire = false;
-            SpawnBulletL(0f, 1f);
-            SpawnBulletR(0f, 1f);
         }
 
 
         if ((Input.GetMouseButtonDown(0) && CanFire))
         {
+            SpawnBullet(0f);
+            SpawnBullet(30f);
+            SpawnBullet(-30f);
             CanFire = false;
-            SpawnBulletL(0f, 0.5f);
-            SpawnBulletR(0f, 0.5f);
-
         }
 
         //reload
@@ -90,19 +90,9 @@ public class Shooting11 : MonoBehaviour
 
 
     }
-    void SpawnBulletL(float angleOffset, float offsetDistance)
+    void SpawnBullet(float angleOffset)
     {
-        Vector3 spawnPosition = transform.position - bulletTransform.right * offsetDistance * 0.8f + bulletTransform.up * 2 * offsetDistance;
-        GameObject newBullet = Instantiate(bullet, spawnPosition, Quaternion.identity);
+        GameObject newBullet = Instantiate(bullet, transform.position + bulletTransform.up * 1f, Quaternion.identity);
         newBullet.GetComponent<bullet>().angleOffset = angleOffset;
-        newBullet.GetComponent<bullet>().KamStreljati = mousePos - transform.position;
-    }
-
-    void SpawnBulletR(float angleOffset, float offsetDistance)
-    {
-        Vector3 spawnPosition = transform.position + bulletTransform.right * offsetDistance * 0.8f + bulletTransform.up * 2 *offsetDistance;
-        GameObject newBullet = Instantiate(bullet, spawnPosition, Quaternion.identity);
-        newBullet.GetComponent<bullet>().angleOffset = angleOffset;
-        newBullet.GetComponent<bullet>().KamStreljati = mousePos - transform.position;
     }
 }
