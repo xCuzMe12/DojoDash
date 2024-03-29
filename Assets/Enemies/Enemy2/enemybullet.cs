@@ -36,6 +36,7 @@ public class enemybullet : MonoBehaviour
             stats.TakeDamage(statsEnemy.dmg);
             Destroy(gameObject);
         }
+        else { Destroy(gameObject); }
     }
 
 
