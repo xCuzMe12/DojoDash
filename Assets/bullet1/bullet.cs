@@ -14,8 +14,13 @@ public class bullet : MonoBehaviour
     private Camera mainCam;
     private Rigidbody2D rb;
     public int lifetime;
-    
 
+    public void Initialize(Vector3 targetPosition, float angleOffset)
+    {
+        Vector3 direction = (targetPosition - transform.position).normalized;
+        Quaternion rotation = Quaternion.Euler(0, 0, angleOffset) * Quaternion.LookRotation(Vector3.forward, direction);
+        GetComponent<Rigidbody2D>().velocity = rotation * Vector2.right * speed;
+    }
     void Start()
     {
         //da das metku speed pa dmg vsakic k se spawna
