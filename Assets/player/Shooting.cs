@@ -15,7 +15,7 @@ public class Shooting : MonoBehaviour
     private float timer;
     public bool autofire = false;
 
-    public int upgtype = 00;
+    public string upgtype = "00";
 
     public GameObject player;
     private Stats stats;
@@ -75,41 +75,44 @@ public class Shooting : MonoBehaviour
 
 
     }
-    public void Shoot(int upg)
+    public void Shoot(string upg)
     {
         switch (upg)
         {
             //TIER I
-            case 00:
+            case "00":
                 SpawnBullet(0f);
                 break;
-            case 11:
+            case "11":
                 SpawnBullet11L(0f, 0.5f);
                 SpawnBullet11R(0f, 0.5f);
                 break;
-            case 12:
+            case "12":
                 SpawnBullet(0f);
                 SpawnBullet(30f);
                 SpawnBullet(-30f);
                 break;
-            case 13:
-                StartCoroutine(Pavza(0.05f));
+            case "13":
+                StartCoroutine(Pavza(0.08f));
                 break;
-            case 14:
-                //DVA NAZAJ
+            case "14":
+                SpawnBullet(0f);
+                SpawnBullet(25f, -0.3f);
+                SpawnBullet(-25f, -0.3f);
                 break;
 
+            //SpawnBullet(0f, -0.3f); SPAWN RIKVERC, PRVA CIFRA OFFSET KOTA, DRUGO PUSTI SKOS TKO
 
             //TIER II
-            case 21:
+            case "21":
                 SpawnBullet21L(0f, 0.5f);
                 SpawnBullet21R(0f, 0.5f);
                 break;
-            case 22:
+            case "22":
                 break;
-            case 23:
+            case "23":
                 break;
-            case 24:
+            case "24":
                 break;
 
         }
@@ -143,7 +146,15 @@ public class Shooting : MonoBehaviour
         yield return new WaitForSeconds(cas);
         SpawnBullet(0f);
     }
-
+    //14
+    void SpawnBullet(float angleOffset, float offsetDistance)
+    {
+        Vector3 spawnPosition = transform.position + bulletTransform.up * 2 * offsetDistance;
+        GameObject newBullet = Instantiate(bullet, spawnPosition, Quaternion.identity);
+        newBullet.GetComponent<bullet>().angleOffset = angleOffset;
+        newBullet.GetComponent<bullet>().KamStreljati = transform.position - mousePos;
+    }
+    
 
 
     //TIER II
@@ -161,6 +172,7 @@ public class Shooting : MonoBehaviour
         GameObject newBullet = Instantiate(bullet, spawnPosition, Quaternion.identity);
         newBullet.GetComponent<bullet>().angleOffset = angleOffset;
     }
+
 
 
 

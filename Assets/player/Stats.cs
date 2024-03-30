@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class Stats : MonoBehaviour
 {
-
+    UpgradeManager upgradeManager;
 
     public int maxHealth;
     [HideInInspector]
@@ -41,6 +41,8 @@ public class Stats : MonoBehaviour
 
     void Start()
     {
+        upgradeManager = GetComponent<UpgradeManager>();
+
         currentHealth = maxHealth;
         
         healthBar.SetMaxHealth(maxHealth);
@@ -67,9 +69,10 @@ public class Stats : MonoBehaviour
         }
         
 
+        
+
         //fake metode
         if (Input.GetKeyDown(KeyCode.Space)) {
-            TakeDamage(10);
             GetXp(50);
         }
 
@@ -77,12 +80,14 @@ public class Stats : MonoBehaviour
         {
             currentXp -= maxXp;
             lvl++;
+            UpgradeScreen(lvl);
             maxXp += (int)maxXp / 2;
+            maxXp = Mathf.Min(maxXp, 200 * (int)Mathf.Ceil(lvl / 5f)); //200 max je cisti max
             xpBar.SetMaxXP(maxXp);
             xpBar.SetXP(currentXp);
             xpBar.LevelDisplay(lvl);
             GetComponent<SkinChanger>().ChangeSkin(lvl - 1); //pol k jih bo veè si player zbere kerega
-            //GetComponent<AbilitySelect>().SelectAbility(lvl);
+            
         }
 
         
@@ -92,7 +97,15 @@ public class Stats : MonoBehaviour
 
     }
 
+    public void UpgradeScreen(int lvl)
+    {
+        if (lvl % 5 == 0)
+        {
+            int upgNum = lvl / 5;
+            upgradeManager.OpenUpgradeScreen(upgNum);
 
+        }
+    }
 
     public void TakeDamage(int damage)
     {
