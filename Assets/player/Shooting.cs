@@ -97,6 +97,9 @@ public class Shooting : MonoBehaviour
                 break;
             case 14:
                 //DVA NAZAJ
+
+
+
                 break;
 
 
@@ -161,6 +164,7 @@ public class Shooting : MonoBehaviour
         GameObject newBullet = Instantiate(bullet, spawnPosition, Quaternion.identity);
         newBullet.GetComponent<bullet>().angleOffset = angleOffset;
     }
+
 
 
 
