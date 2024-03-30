@@ -29,4 +29,5 @@ public class Upgrade1 : MonoBehaviour
     {
         puscica.GetComponent<Shooting>().upgtype = "14";
     }
+
 }

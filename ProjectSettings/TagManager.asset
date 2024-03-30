@@ -12,6 +12,7 @@ TagManager:
   - enemyBullet
   - ShootingPrefab
   - bulletTransform
+  - upg1
   layers:
   - Default
   - TransparentFX
