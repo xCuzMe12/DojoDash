@@ -15,6 +15,7 @@ public class Shooting : MonoBehaviour
     private float timer;
     public bool autofire = false;
 
+    public int upgtype = 00;
 
     public GameObject player;
     private Stats stats;
@@ -49,14 +50,14 @@ public class Shooting : MonoBehaviour
         if (autofire && CanFire)
         {
             CanFire = false;
-            SpawnBullet(0f);
+            Shoot(upgtype);
         }
 
 
         if ((Input.GetMouseButtonDown(0) && CanFire))
         {
             CanFire = false;
-            SpawnBullet(0f);
+            Shoot(upgtype);
         }
 
         //reload
@@ -74,9 +75,93 @@ public class Shooting : MonoBehaviour
 
 
     }
-    void SpawnBullet(float angleOffset)
+    public void Shoot(int upg)
+    {
+        switch (upg)
+        {
+            //TIER I
+            case 00:
+                SpawnBullet(0f);
+                break;
+            case 11:
+                SpawnBullet11L(0f, 0.5f);
+                SpawnBullet11R(0f, 0.5f);
+                break;
+            case 12:
+                SpawnBullet(0f);
+                SpawnBullet(30f);
+                SpawnBullet(-30f);
+                break;
+            case 13:
+                StartCoroutine(Pavza(0.05f));
+                break;
+            case 14:
+                //DVA NAZAJ
+                break;
+
+
+            //TIER II
+            case 21:
+                SpawnBullet21L(0f, 0.5f);
+                SpawnBullet21R(0f, 0.5f);
+                break;
+            case 22:
+                break;
+            case 23:
+                break;
+            case 24:
+                break;
+
+        }
+    }
+    //basic, 12, vse k so dependant na mousepos
+    void SpawnBullet(float angleOffset) 
     {
         GameObject newBullet = Instantiate(bullet, transform.position + bulletTransform.up * 1f, Quaternion.identity);
         newBullet.GetComponent<bullet>().angleOffset = angleOffset;
     }
+
+    //11
+    void SpawnBullet11L(float angleOffset, float offsetDistance)
+    {
+        Vector3 spawnPosition = transform.position - bulletTransform.right * offsetDistance * 0.8f + bulletTransform.up * 2 * offsetDistance;
+        GameObject newBullet = Instantiate(bullet, spawnPosition, Quaternion.identity);
+        newBullet.GetComponent<bullet>().angleOffset = angleOffset;
+        newBullet.GetComponent<bullet>().KamStreljati = mousePos - transform.position;
+    }
+    void SpawnBullet11R(float angleOffset, float offsetDistance)
+    {
+        Vector3 spawnPosition = transform.position + bulletTransform.right * offsetDistance * 0.8f + bulletTransform.up * 2 * offsetDistance;
+        GameObject newBullet = Instantiate(bullet, spawnPosition, Quaternion.identity);
+        newBullet.GetComponent<bullet>().angleOffset = angleOffset;
+        newBullet.GetComponent<bullet>().KamStreljati = mousePos - transform.position;
+    }
+    //13
+    IEnumerator Pavza(float cas)
+    {
+        SpawnBullet(0f);
+        yield return new WaitForSeconds(cas);
+        SpawnBullet(0f);
+    }
+
+
+
+    //TIER II
+    //21
+    void SpawnBullet21L(float angleOffset, float offsetDistance)
+    {
+        Vector3 spawnPosition = transform.position - bulletTransform.right * offsetDistance * 0.8f + bulletTransform.up * 2 * offsetDistance;
+        GameObject newBullet = Instantiate(bullet, spawnPosition, Quaternion.identity);
+        newBullet.GetComponent<bullet>().angleOffset = angleOffset;
+    }
+
+    void SpawnBullet21R(float angleOffset, float offsetDistance)
+    {
+        Vector3 spawnPosition = transform.position + bulletTransform.right * offsetDistance * 0.8f + bulletTransform.up * 2 * offsetDistance;
+        GameObject newBullet = Instantiate(bullet, spawnPosition, Quaternion.identity);
+        newBullet.GetComponent<bullet>().angleOffset = angleOffset;
+    }
+
+
+
 }
