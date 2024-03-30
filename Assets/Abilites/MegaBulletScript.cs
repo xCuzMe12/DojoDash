@@ -90,6 +90,10 @@ public class MegaBulletScript : MonoBehaviour
 
             }
         }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 
 
