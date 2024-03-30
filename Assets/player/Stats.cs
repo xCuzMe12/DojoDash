@@ -82,6 +82,7 @@ public class Stats : MonoBehaviour
             lvl++;
             UpgradeScreen(lvl);
             maxXp += (int)maxXp / 2;
+            maxXp = Mathf.Min(maxXp, 200 * (int)Mathf.Ceil(lvl / 5f)); //200 max je cisti max
             xpBar.SetMaxXP(maxXp);
             xpBar.SetXP(currentXp);
             xpBar.LevelDisplay(lvl);
@@ -102,6 +103,7 @@ public class Stats : MonoBehaviour
         {
             int upgNum = lvl / 5;
             upgradeManager.OpenUpgradeScreen(upgNum);
+
         }
     }
 
