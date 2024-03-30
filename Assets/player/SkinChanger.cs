@@ -8,6 +8,7 @@ public class SkinChanger : MonoBehaviour
     public Sprite[] skini;
     private SpriteRenderer sr;
     private int StevilkaSkina;
+    private float speed;
     // Start is called before the first frame update
     void Start()
     {
@@ -33,5 +34,18 @@ public class SkinChanger : MonoBehaviour
         sr.sprite = skini[StevilkaSkina];
 
 
+    }
+    //Help z invizibilitijom
+    public void DisableSkin(float howLong, float speedBoostDisable)
+    {
+        sr.enabled = false;
+        speed = speedBoostDisable;
+        StartCoroutine(EnableSkin(speed));
+    }
+    IEnumerator EnableSkin(float speedDisable)
+    {
+        yield return new WaitForSeconds(5f);
+        sr.enabled = true;
+        GetComponent<playerMovement>().speed -= speedDisable;
     }
 }

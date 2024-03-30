@@ -22,7 +22,7 @@ public class playerMovement : MonoBehaviour
 
     
     private Stats stats;
-    [HideInInspector]
+    //[HideInInspector]
     public float speed;
 
     public bool boosted = false;
