@@ -81,7 +81,6 @@ public class MegaBulletScript : MonoBehaviour
             EnemyMovement enemy = collision.gameObject.GetComponent<EnemyMovement>();            
             if (damage >= enemy.enemyHealth)
             {
-                Debug.Log("Hello");
                 damage -= enemy.enemyHealth;
             }
             else
