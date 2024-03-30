@@ -62,8 +62,8 @@ public class Shooting11 : MonoBehaviour
         if (autofire && CanFire)
         {
             CanFire = false;
-            SpawnBulletL(0f, 1f);
-            SpawnBulletR(0f, 1f);
+            SpawnBulletL(0f, 0.5f);
+            SpawnBulletR(0f, 0.5f);
         }
 
 

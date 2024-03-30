@@ -1,3 +1,4 @@
+using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
@@ -15,6 +16,15 @@ public class Invisibility : Ability
 
         player.GetComponent<SkinChanger>().DisableSkin(Duration, SpeedBoost);
 
+        Transform childTransform = player.transform.Find("RotatePoint/BulletTransform");
+
+        if (childTransform != null)
+        {
+            GameObject childObject = childTransform.gameObject;
+            SetActiveSprite setActiveSprite = childObject.GetComponent<SetActiveSprite>();
+            setActiveSprite.DeactiveSprite(Duration);
+
+        }
     }
 
 }

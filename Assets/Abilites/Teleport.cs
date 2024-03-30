@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Abilities/Teleport")]
+[CreateAssetMenu(menuName = "Abilities/Teleport")]  //loh bi nardila se nek tranzition fade in/out
 public class Teleport : Ability {
     public int distance;
     public GameObject shadow;
