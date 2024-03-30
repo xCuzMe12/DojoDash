@@ -9,6 +9,7 @@ public class SkinChanger : MonoBehaviour
     private SpriteRenderer sr;
     private int StevilkaSkina;
     private float speed;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -39,8 +40,10 @@ public class SkinChanger : MonoBehaviour
     public void DisableSkin(float howLong, float speedBoostDisable)
     {
         sr.enabled = false;
+        
         speed = speedBoostDisable;
         StartCoroutine(EnableSkin(speed));
+
     }
     IEnumerator EnableSkin(float speedDisable)
     {
