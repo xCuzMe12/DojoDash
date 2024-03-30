@@ -13,6 +13,7 @@ TagManager:
   - ShootingPrefab
   - bulletTransform
   - upg1
+  - MegaBullet
   layers:
   - Default
   - TransparentFX

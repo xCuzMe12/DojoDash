@@ -75,6 +75,18 @@ public class EnemyMovement : MonoBehaviour
 
             }
         }
+
+        if (collision.gameObject.CompareTag("MegaBullet"))
+        {
+            MegaBulletScript megaBullet = collision.gameObject.GetComponent<MegaBulletScript>();
+            enemyHealth -= megaBullet.damage;
+
+            if (enemyHealth <= 0)
+            {
+                OnDestroy(megaBullet.stats);
+            }
+        }
+
         if (collision.gameObject.CompareTag("Enemy"))
         {
             StartCoroutine(UpdateMovementCoroutine());
