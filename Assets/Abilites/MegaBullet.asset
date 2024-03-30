@@ -16,3 +16,4 @@ MonoBehaviour:
   cooldownTime: 3
   activeTime: 3
   BulletPrefab: {fileID: 1962971501940932394, guid: b844898874344f84e86a48dfe6908307, type: 3}
+  spawnDistance: 2

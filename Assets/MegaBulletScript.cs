@@ -40,7 +40,7 @@ public class MegaBulletScript : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         stats = player.GetComponent<Stats>();
         rb = GetComponent<Rigidbody2D>();
-        bulletSpeed = stats.bulletSpeed;
+       
 
         if (!_kamStreljatiSet)
         {

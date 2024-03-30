@@ -6,20 +6,23 @@ using UnityEngine;
 public class MegaBullet : Ability
 {
     public GameObject BulletPrefab;
-   
+    public float spawnDistance;
+
+
     public override void Activate(GameObject player)
     {
+        // Get the position of the mouse cursor in world space
+        Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        mousePosition.z = 0f; // Ensure the z-coordinate is 0 (on the ground)
+
         // Calculate the direction from the player to the mouse position
-        Vector3 direction = (GetMouseWorldPosition() - player.transform.position).normalized;
+        Vector3 direction = mousePosition - player.transform.position;
+        direction.Normalize(); // Normalize the direction vector
 
-        // Calculate the offset direction by rotating the direction vector
-        Quaternion rotation = Quaternion.AngleAxis(0f, Vector3.forward);
-        Vector3 offsetDirection = rotation * direction;
+        // Calculate the spawn position a few units ahead of the player
+        Vector3 spawnPosition = player.transform.position + direction * spawnDistance;
 
-        // Calculate the position to instantiate the bullet, offset from the player
-        Vector3 spawnPosition = player.transform.position + offsetDirection * 0.25f;
-
-        // Instantiate the bullet prefab at the calculated position and rotation
+        // Instantiate the turret at the calculated spawn position
         Instantiate(BulletPrefab, spawnPosition, Quaternion.identity);
     }
 
