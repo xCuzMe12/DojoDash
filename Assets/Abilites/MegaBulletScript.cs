@@ -71,9 +71,12 @@ public class MegaBulletScript : MonoBehaviour
         StartCoroutine(Destruction());
 
     }
+
+    HashSet<string> enemySet = new HashSet<string> { "Enemy", "Enemy2", "Enemy3", "Enemy4", "Enemy5", "Enemy6"};
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Enemy")
+        if (enemySet.Contains(collision.gameObject.tag))
         {
             EnemyMovement enemy = collision.gameObject.GetComponent<EnemyMovement>();            
             if (damage >= enemy.enemyHealth)
