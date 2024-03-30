@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Crossbow Turret
   m_EditorClassIdentifier: 
   name: 
-  cooldownTime: 0
-  activeTime: 0
-  TurretPrefab: {fileID: 0}
+  cooldownTime: 5
+  activeTime: 5
+  TurretPrefab: {fileID: 4757676836623930778, guid: badc8f8523783d14c8a2b5bc6f26597c, type: 3}
+  spawnDistance: 2
