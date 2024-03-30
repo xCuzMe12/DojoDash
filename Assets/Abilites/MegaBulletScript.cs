@@ -71,6 +71,23 @@ public class MegaBulletScript : MonoBehaviour
         StartCoroutine(Destruction());
 
     }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Enemy")
+        {
+            EnemyMovement enemy = collision.gameObject.GetComponent<EnemyMovement>();            
+            if (damage >= enemy.enemyHealth)
+            {
+                damage -= enemy.enemyHealth;
+                Destroy(collision.gameObject);
+            }
+            else
+            {
+                Destroy(gameObject);
+
+            }
+        }
+    }
 
 
 
@@ -78,14 +95,9 @@ public class MegaBulletScript : MonoBehaviour
     {
         yield return new WaitForSeconds(lifetime); //yield return pr coroutinah 
                                                    //fja odsteva tok sec k je inpol gre naprej po kodi
-
-
         Destroy(gameObject);
     }
 
 
-    /*void OnCollisionEnter2D(Collision2D collision)
-    {
-        Destroy(gameObject);
-    }*/
+
 }
