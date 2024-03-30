@@ -159,6 +159,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a92636f1eaa8bd49958259c87299e4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyGold: 10
   enemySpeed: 2
   player: {fileID: 0}
   enemyHealth: 12
@@ -265,6 +266,7 @@ MonoBehaviour:
   bulletTransform: {fileID: 7724415628182624511}
   CanFire: 1
   autofire: 0
+  upgtype: 00
   player: {fileID: 0}
 --- !u!114 &9145419915169512866
 MonoBehaviour:

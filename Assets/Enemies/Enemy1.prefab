@@ -74,6 +74,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a92636f1eaa8bd49958259c87299e4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyGold: 5
   enemySpeed: 3
   player: {fileID: 0}
   enemyHealth: 15

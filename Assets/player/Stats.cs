@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.SocialPlatforms.Impl;
 
 public class Stats : MonoBehaviour
 {
@@ -15,7 +16,7 @@ public class Stats : MonoBehaviour
     [HideInInspector]public int currentXp = 0;
     [HideInInspector]public int lvl = 1;
 
-
+    public int gold = 100;
     public int damage;
     public float bulletSpeed;
     public int speed;

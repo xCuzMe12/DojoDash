@@ -7,6 +7,7 @@ using UnityEngine.UIElements;
 
 public class EnemyMovement : MonoBehaviour
 {
+    public int enemyGold;
     public float enemySpeed;
     Rigidbody2D rb;
     [HideInInspector]public GameObject player;
@@ -83,6 +84,7 @@ public class EnemyMovement : MonoBehaviour
         void OnDestroy(Stats stats)
         {
             stats.kills++;
+            stats.gold += enemyGold;
             stats.statsDisplay.Display();
             stats.currentXp += enemyXP;
             stats.xpBar.SetXP(stats.currentXp);
