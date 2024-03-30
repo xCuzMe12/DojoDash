@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b6b0a183b3240344a0bd5005c0a9aff, type: 3}
   m_Name: Crossbow Turret
   m_EditorClassIdentifier: 
-  name: 
+  name: Crossbow
   cooldownTime: 5
   activeTime: 5
   TurretPrefab: {fileID: 4757676836623930778, guid: badc8f8523783d14c8a2b5bc6f26597c, type: 3}
