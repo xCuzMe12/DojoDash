@@ -32,7 +32,7 @@ public class Shooting : MonoBehaviour
     {
         //sledenje miski
         mousePos = mainCam.ScreenToWorldPoint(Input.mousePosition);
- 
+
         Vector3 rotation = mousePos - transform.position;
 
 
@@ -44,7 +44,7 @@ public class Shooting : MonoBehaviour
         if (Input.GetKeyDown("x"))
         {
             autofire = !autofire; //tko sam switchas bool, CRAZY
-         }
+        }
 
         //stel
         if (autofire && CanFire)
@@ -64,19 +64,23 @@ public class Shooting : MonoBehaviour
         if (!CanFire)
         {
             timer += Time.deltaTime;
-                if (timer > stats.attackSpeed)
+            if (timer > stats.attackSpeed)
             {
                 CanFire = true;
                 timer = 0;
             }
         }
 
-
-
-
     }
+
+            
+
+
+
+    
     public void Shoot(string upg)
     {
+
         switch (upg)
         {
             //TIER I

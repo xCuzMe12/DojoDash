@@ -120,4 +120,8 @@ public class playerMovement : MonoBehaviour
             bonusSpeedText.enabled = false;
     }
 
+    public void UpdateSpeed()
+    {
+        speed = stats.speed;
+    }
 }

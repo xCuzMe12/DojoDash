@@ -43,6 +43,7 @@ public class bullet : MonoBehaviour
         damage = stats.damage;
         bulletSpeed = stats.bulletSpeed;
 
+
         if (!_kamStreljatiSet)
         {
             mainCam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();

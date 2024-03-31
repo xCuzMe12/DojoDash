@@ -19,7 +19,7 @@ public class Stats : MonoBehaviour
     public int gold = 100;
     public int damage;
     public float bulletSpeed;
-    public int speed;
+    public float speed;
     public float attackSpeed;
     public int BodyDamage;
     public float knockbackForce;
@@ -91,12 +91,7 @@ public class Stats : MonoBehaviour
             
         }
 
-        //SHOP
-        if (Input.GetKeyDown(KeyCode.Tab))
-        {
-            GameObject shop = GameObject.FindGameObjectWithTag("Shop");
-            shop.SetActive(true);
-        }
+
 
 
 
