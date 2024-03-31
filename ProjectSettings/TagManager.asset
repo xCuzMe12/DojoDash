@@ -14,6 +14,8 @@ TagManager:
   - bulletTransform
   - upg1
   - MegaBullet
+  - Shop
+  - Canvas
   layers:
   - Default
   - TransparentFX

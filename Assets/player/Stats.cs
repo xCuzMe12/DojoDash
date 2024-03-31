@@ -91,7 +91,14 @@ public class Stats : MonoBehaviour
             
         }
 
-        
+        //SHOP
+        if (Input.GetKeyDown(KeyCode.Tab))
+        {
+            GameObject shop = GameObject.FindGameObjectWithTag("Shop");
+            shop.SetActive(true);
+        }
+
+
 
 
 
