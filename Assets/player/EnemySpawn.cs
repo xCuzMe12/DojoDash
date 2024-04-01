@@ -53,12 +53,7 @@ public class EnemySpawn : MonoBehaviour
             spawnPosition.y += player.transform.position.y;
             if (!CheckForObjectAtPoint(spawnPosition, 2)){
                 Instantiate(enemy, spawnPosition, Quaternion.identity);
-            }
-            else
-            {
-                Debug.Log("Enemy not spawned because a game object already exists there!");
-            }
-            
+            }         
         }
     }
 

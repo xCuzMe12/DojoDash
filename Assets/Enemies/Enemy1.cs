@@ -70,9 +70,10 @@ public class EnemyMovement : MonoBehaviour
             if (enemyHealth <= 0)
             {
                 OnDestroy(bullet.stats);
-
-
-
+            }
+            else
+            {
+                StartCoroutine(UpdateMovementCoroutine());
             }
         }
 
@@ -89,6 +90,7 @@ public class EnemyMovement : MonoBehaviour
        
         if (enemySet.Contains(collision.gameObject.tag))
         {
+            StopCoroutine(UpdateMovementCoroutine());
             StartCoroutine(UpdateMovementCoroutine());
         }
 
