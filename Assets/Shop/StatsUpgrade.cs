@@ -15,10 +15,17 @@ public class StatsUpgrade : MonoBehaviour
     public StatsScheme shema;
     GameObject player;
     Stats stats;
+    TextUpdater textUpdater;
+    //restrictions
     int lvlCap = 5;
+    int numOfUpg = 0;
+
+
+
 
     public void Start()
     {
+        textUpdater = GetComponent<TextUpdater>();
         shema = GetComponent<StatsScheme>();
         player = GameObject.FindGameObjectWithTag("Player");
         stats = player.GetComponent<Stats>();
@@ -29,96 +36,144 @@ public class StatsUpgrade : MonoBehaviour
     }
 
    public void speedUpg()
-    {       
-        if (speedI < lvlCap && shema.cost[speedI+1] <= stats.gold)
+    {    
+       if (numOfUpg < stats.lvl)
         {
-            speedI++;
-            stats.speed = shema.speed[speedI];
-            stats.gold -= shema.cost[speedI];
-            player.GetComponent<playerMovement>().UpdateSpeed();
+            if (speedI < lvlCap && shema.cost[speedI + 1] <= stats.gold)
+            {
+                speedI++;
+                stats.speed = shema.speed[speedI];
+                stats.gold -= shema.cost[speedI];
+                player.GetComponent<playerMovement>().UpdateSpeed();
+                numOfUpg++;
+                textUpdater.SetText("speed", speedI, lvlCap);
+                stats.statsDisplay.Display();
+            }
+            else
+            {
+                Debug.Log("Yu broke");
+            }
         }
-        else
-        {
-            Debug.Log("Yu broke");
-        }
+       else { Debug.Log("To small lvl"); }
+
     }
 
     public void healthUpg()
     {
-        if (healthI < lvlCap && shema.cost[healthI + 1] <= stats.gold)
+        if (numOfUpg < stats.lvl)
         {
-            healthI++;
-            int addup = shema.maxHp[healthI] - stats.maxHealth; //zracunas razliko
-            stats.maxHealth = shema.maxHp[healthI];
-            stats.currentHealth += addup;
-            stats.gold -= shema.cost[healthI];
-            stats.healthBar.SetMaxHealth(stats.maxHealth);
-            stats.healthBar.HealthDisplay();
+            if (healthI < lvlCap && shema.cost[healthI + 1] <= stats.gold)
+            {
+                healthI++;
+                int addup = shema.maxHp[healthI] - stats.maxHealth; //zracunas razliko
+                stats.maxHealth = shema.maxHp[healthI];
+                stats.currentHealth += addup;
+                stats.gold -= shema.cost[healthI];
+                stats.healthBar.SetMaxHealth(stats.maxHealth);
+                stats.healthBar.SetHealth(stats.currentHealth);
+                stats.healthBar.HealthDisplay();
+                numOfUpg++;
+                textUpdater.SetText("health", healthI, lvlCap);
+                stats.statsDisplay.Display();
+            }
+            else
+            {
+                Debug.Log("Yu broke");
+            }
         }
-        else
-        {
-            Debug.Log("Yu broke");
-        }
+        else { Debug.Log("To small lvl"); }
+
 
     }
     public void attackSpeedUpg()
     {
-        if (attackSpeedI < lvlCap && shema.cost[attackSpeedI + 1] <= stats.gold)
+        if (numOfUpg < stats.lvl)
         {
-            attackSpeedI++;
-            stats.attackSpeed = shema.attackSpeed[attackSpeedI];
-            stats.gold -= shema.cost[attackSpeedI];
+            if (attackSpeedI < lvlCap && shema.cost[attackSpeedI + 1] <= stats.gold)
+            {
+                attackSpeedI++;
+                stats.attackSpeed = shema.attackSpeed[attackSpeedI];
+                stats.gold -= shema.cost[attackSpeedI];
+                numOfUpg++;
+                textUpdater.SetText("attackSpeed", attackSpeedI, lvlCap);
+                stats.statsDisplay.Display();
+            }
+            else
+            {
+                Debug.Log("Yu broke");
+            }
         }
-        else
-        {
-            Debug.Log("Yu broke");
-        }
+        else { Debug.Log("To small lvl"); }
+
 
     }
     public void bodyDMGUpg()
     {
-        if (bodyDMGI < lvlCap && shema.cost[bodyDMGI + 1] <= stats.gold)
+        if (numOfUpg < stats.lvl)
         {
-            bodyDMGI++;
-            stats.BodyDamage = shema.bodyDmg[bodyDMGI];
-            stats.gold -= shema.cost[bodyDMGI];
+            if (bodyDMGI < lvlCap && shema.cost[bodyDMGI + 1] <= stats.gold)
+            {
+                bodyDMGI++;
+                stats.BodyDamage = shema.bodyDmg[bodyDMGI];
+                stats.gold -= shema.cost[bodyDMGI];
+                numOfUpg++;
+                textUpdater.SetText("bodyDamage", bodyDMGI, lvlCap);
+                stats.statsDisplay.Display();
+            }
+            else
+            {
+                Debug.Log("Yu broke");
+            }
         }
-        else
-        {
-            Debug.Log("Yu broke");
-        }
+        else { Debug.Log("To small lvl"); }
+
 
 
     }
     public void DMGUpg()
     {
-        if (DMGI < lvlCap && shema.cost[DMGI + 1] <= stats.gold)
+        if (numOfUpg < stats.lvl)
         {
-            DMGI++;
-            stats.damage = shema.dmg[DMGI];
-            stats.gold -= shema.cost[DMGI];
+            if (DMGI < lvlCap && shema.cost[DMGI + 1] <= stats.gold)
+            {
+                DMGI++;
+                stats.damage = shema.dmg[DMGI];
+                stats.gold -= shema.cost[DMGI];
+                numOfUpg++;
+                textUpdater.SetText("damage", DMGI, lvlCap);
+                stats.statsDisplay.Display();
+            }
+            else
+            {
+                Debug.Log("Yu broke");
+            }
         }
-        else
-        {
-            Debug.Log("Yu broke");
-        }
+        else { Debug.Log("To small lvl"); }
+
 
 
 
     }
     public void bulletSpeedUpg()
-    {
-        if (bulletSpeedI < lvlCap && shema.cost[bulletSpeedI + 1] <= stats.gold)
+    { 
+        if (numOfUpg < stats.lvl)
         {
-            bulletSpeedI++;
-            stats.bulletSpeed = shema.bulletSpeed[bulletSpeedI];
-            stats.gold -= shema.cost[bulletSpeedI];
+            if (bulletSpeedI < lvlCap && shema.cost[bulletSpeedI + 1] <= stats.gold)
+            {
+                bulletSpeedI++;
+                stats.bulletSpeed = shema.bulletSpeed[bulletSpeedI];
+                stats.gold -= shema.cost[bulletSpeedI];
+                numOfUpg++;
+                textUpdater.SetText("bulletSpeed", bulletSpeedI, lvlCap);
+                stats.statsDisplay.Display();
+            }
+            else
+            {
+                Debug.Log("Yu broke");
+            }
+        }
+        else { Debug.Log("To small lvl"); }
 
-        }
-        else
-        {
-            Debug.Log("Yu broke");
-        }
 
 
     }

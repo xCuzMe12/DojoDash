@@ -20,10 +20,6 @@ public class StatsDisplay : MonoBehaviour
     {
         string stats =
          "GOLD: " + player.GetComponent<Stats>().gold.ToString() + "\n" +
-         "SPEED:        " + player.GetComponent<Stats>().speed.ToString() + "\n" +
-         "DAMAGE:     " + player.GetComponent<Stats>().damage.ToString() + "\n" +
-         "RELOAD SPEED: " + player.GetComponent<Stats>().attackSpeed.ToString() + "s" +"\n" +
-         "BULLET SPEED: " + player.GetComponent<Stats>().bulletSpeed.ToString() + "\n" +
          "KILLS: " + player.GetComponent<Stats>().kills;
 
 

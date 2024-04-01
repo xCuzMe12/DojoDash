@@ -111,11 +111,11 @@ public class playerMovement : MonoBehaviour
         totalBonusSpeed += amount; 
         speed += amount;
         bonusSpeedText.enabled = true; 
-        bonusSpeedText.text = "+" + totalBonusSpeed.ToString(); 
+        bonusSpeedText.text = "BONUS SPEED +" + totalBonusSpeed.ToString(); 
         yield return new WaitForSeconds(duration);
         speed -= amount;
         totalBonusSpeed -= amount;
-        bonusSpeedText.text = "+" + totalBonusSpeed.ToString();
+        bonusSpeedText.text = "BONUS SPEED +" + totalBonusSpeed.ToString();
         if (totalBonusSpeed <= 0) 
             bonusSpeedText.enabled = false;
     }
