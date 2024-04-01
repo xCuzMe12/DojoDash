@@ -15,7 +15,7 @@ public class EnemyMovement : MonoBehaviour
     public int enemyDMG = 5;
     public int enemyXP = 7;
     private WaitForSeconds updateDelay = new WaitForSeconds(1f); //fja kok sekund cakat
-
+    HashSet<string> enemySet = new HashSet<string> { "Enemy", "Enemy2", "Enemy3", "Enemy4", "Enemy5", "Enemy6" };
     //public GameObject healthText; 
     //za une mocnejse sam tle dodaji se fje za shooting pa to
 
@@ -86,8 +86,8 @@ public class EnemyMovement : MonoBehaviour
                 OnDestroy(megaBullet.stats);
             }
         }
-
-        if (collision.gameObject.CompareTag("Enemy"))
+       
+        if (enemySet.Contains(collision.gameObject.tag))
         {
             StartCoroutine(UpdateMovementCoroutine());
         }

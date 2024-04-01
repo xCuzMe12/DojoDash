@@ -16,6 +16,7 @@ TagManager:
   - MegaBullet
   - Shop
   - Canvas
+  - border
   layers:
   - Default
   - TransparentFX
