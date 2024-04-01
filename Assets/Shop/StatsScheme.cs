@@ -26,4 +26,7 @@ public class StatsScheme : MonoBehaviour
     public float[] attackSpeed = { 0, 0.45f, 0.4f, 0.35f, 0.30f, 0.25f };
 
 
+
+    
+
 }

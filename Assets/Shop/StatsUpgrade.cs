@@ -20,6 +20,11 @@ public class StatsUpgrade : MonoBehaviour
     int lvlCap = 5;
     int numOfUpg = 0;
 
+    //heal potion
+    public int numOfHeals = 0;
+    public int healPrice = 25;
+    public int addup = 5;
+    public int healUp = 20;
 
 
 
@@ -180,5 +185,20 @@ public class StatsUpgrade : MonoBehaviour
     public void bulletPenUpg() //DODEJ KO BOS
     {
         bulletPenI++;
+    }
+
+    public void HealUp()
+    {
+        int cost = healPrice + addup * numOfHeals;
+        if (cost <= stats.gold)
+        {
+            stats.currentHealth += healUp;
+            stats.gold -= cost;
+            stats.healthBar.SetHealth(stats.currentHealth);
+            stats.healthBar.HealthDisplay();
+            textUpdater.SetText("heal", healUp, cost);
+            stats.statsDisplay.Display();
+            numOfHeals++;
+        }
     }
 }

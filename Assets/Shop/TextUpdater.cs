@@ -17,6 +17,7 @@ public class TextUpdater : MonoBehaviour
     public GameObject pen;
     public GameObject bodyDamage;
     public GameObject bulletSpeed;
+    public GameObject heal;
     //public Text speed;
 
     private TMP_Text speedText;
@@ -26,6 +27,7 @@ public class TextUpdater : MonoBehaviour
     private TMP_Text penText;
     private TMP_Text bodyDamageText;
     private TMP_Text bulletSpeedText;
+    private TMP_Text healText;
 
     void Start()
     {
@@ -39,6 +41,7 @@ public class TextUpdater : MonoBehaviour
         penText = pen.GetComponent<TMP_Text>();
         bodyDamageText = bodyDamage.GetComponent<TMP_Text>();
         bulletSpeedText = bulletSpeed.GetComponent<TMP_Text>();
+        healText = heal.GetComponent<TMP_Text>();
     }
 
     public void SetText(string index, int upgLvl, int lvlCap)
@@ -66,6 +69,9 @@ public class TextUpdater : MonoBehaviour
             case "bulletSpeed":
                 bulletSpeedText.text = $"BULLET SPEED ({upgLvl}/{lvlCap})";
                 break;
+            case "heal":
+                healText.text = $"HEAL +{upgLvl} (COST: {lvlCap})"; //tuki svamal cheatala system, mal drugace
+                    break;
         }
     }
 
