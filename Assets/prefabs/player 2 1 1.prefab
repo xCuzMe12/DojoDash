@@ -472,6 +472,7 @@ MonoBehaviour:
   bulletTransform: {fileID: 6193109665970331922}
   CanFire: 1
   autofire: 0
+  upgtype: 00
   player: {fileID: 8032818294812812937}
 --- !u!1 &7153340878467352552
 GameObject:
@@ -697,6 +698,7 @@ MonoBehaviour:
   maxXp: 45
   currentXp: 0
   lvl: 1
+  gold: 100
   damage: 5
   bulletSpeed: 13
   speed: 5

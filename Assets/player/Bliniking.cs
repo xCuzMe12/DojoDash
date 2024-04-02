@@ -7,7 +7,7 @@ public class Bliniking : MonoBehaviour
 
     private SpriteRenderer skinSpriteRenderer;
     private bool jeZeDmg = false;
-
+    HashSet<string> enemySet = new HashSet<string> { "Enemy", "Enemy2", "Enemy3", "Enemy4", "Enemy5", "Enemy6" };
     void Start()
     {
         Transform skinTransform = transform.Find("skin");
@@ -19,7 +19,7 @@ public class Bliniking : MonoBehaviour
     void OnCollisionEnter2D(Collision2D collision)
     {
         
-        if (collision.gameObject.CompareTag("Enemy") && !jeZeDmg)
+        if (enemySet.Contains(collision.gameObject.tag) && !jeZeDmg)
         {
             StartCoroutine(BlinkRed());
         }
