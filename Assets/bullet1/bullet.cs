@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class bullet : MonoBehaviour
@@ -8,6 +9,7 @@ public class bullet : MonoBehaviour
     public float angleOffset;
     private Vector3 _kam_streljati;
     private bool _kamStreljatiSet = false;
+    public SpriteRenderer skin;
 
 
     //CE HOCS DA NE STRELJVA V SMER MISKE, SETTAS KamStreljati
@@ -23,14 +25,17 @@ public class bullet : MonoBehaviour
 
     private GameObject player;
     [HideInInspector] public Stats stats;
-    public float bulletSpeed;
+    [HideInInspector] public float bulletSpeed;
     [HideInInspector] public int damage;
+
 
     private Vector3 mousePos;
     private Camera mainCam;
     private Rigidbody2D rb;
     public int lifetime;
-
+    public float ASpeedChange;
+    public int damageChange;
+    public float rotationSpeed;
     Vector3 direction;
 
 
@@ -56,20 +61,21 @@ public class bullet : MonoBehaviour
         }
 
 
-        // Calculate the angle to the target position
         float angleToTarget = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-
-        // Apply the angle offset
         angleToTarget += angleOffset;
 
-        // Convert the angle back to a direction vector
         Vector3 rotatedDirection = Quaternion.Euler(0, 0, angleToTarget) * Vector3.right;
 
-        // Set the bullet's velocity using the rotated direction
         rb.velocity = rotatedDirection.normalized * bulletSpeed;
 
-        // Calculate rotation based on the modified direction
-        transform.rotation = Quaternion.Euler(0, 0, angleToTarget + 90);
+        if (rotationSpeed > 0)
+        {
+            StartCoroutine(RotateShuriken());
+        }
+        else
+        {
+            transform.rotation = Quaternion.Euler(0, 0, angleToTarget + 90);
+        }
         StartCoroutine(Destruction());
          
     }
@@ -84,8 +90,16 @@ public class bullet : MonoBehaviour
         
         Destroy(gameObject);
     }
+    IEnumerator RotateShuriken()
+    {
+        while (true)
+        {
+            transform.Rotate(Vector3.forward * rotationSpeed * Time.deltaTime, Space.Self);
+            yield return null;
+        }
+    }
 
-    
+
     void OnCollisionEnter2D(Collision2D collision) 
     {
             Destroy(gameObject);     

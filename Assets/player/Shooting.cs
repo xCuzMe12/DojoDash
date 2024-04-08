@@ -19,12 +19,16 @@ public class Shooting : MonoBehaviour
 
     public GameObject player;
     private Stats stats;
+    private bullet bulletStats;
+    
 
     void Start()
     {
         mainCam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
         stats = player.GetComponent<Stats>();
-
+        bulletStats = bullet.GetComponent<bullet>();
+        stats.damage += bulletStats.damageChange; //vsak weapon ti +/- mal dm pa +/- mal ASpeeda
+        stats.attackSpeed -= bulletStats.ASpeedChange;
 
     }
 
