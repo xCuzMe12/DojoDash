@@ -1130,7 +1130,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 19, y: 130}
+  m_AnchoredPosition: {x: -294, y: 58.5}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &515548844
@@ -1153,7 +1153,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: New Text
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1163,7 +1163,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -1180,14 +1180,14 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 25
+  m_fontSizeBase: 25
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
-  m_HorizontalAlignment: 1
+  m_fontStyle: 37
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -5427,14 +5427,26 @@ MonoBehaviour:
   - {fileID: 68348611560708418, guid: 0998cf70486c5914bb2666264526113a, type: 3}
   - {fileID: 68348611560708418, guid: 3375857b1a1b6004eae4ef63112472a7, type: 3}
   - {fileID: 68348611560708418, guid: bbbc5bb9a3ef1a044999452b0c84d374, type: 3}
-  ShurikenArray: []
-  DaggerArray: []
-  DaggerRenderers: []
+  ShurikenArray:
+  - {fileID: 3431795046329355622, guid: 80288c1b44a90b94d8287b7ed1d19b33, type: 3}
+  - {fileID: 3431795046329355622, guid: e5a9ae3b190a49543ba4ca38fcc30278, type: 3}
+  - {fileID: 3431795046329355622, guid: 4fd8199788b78464ca3e9ca5ddc44f8c, type: 3}
+  DaggerArray:
+  - {fileID: 363161094230359908, guid: 04680d6483d14c64fba9a4f3d8d60efe, type: 3}
+  - {fileID: 363161094230359908, guid: 341f21c65dfbe1a47a844843eef64c03, type: 3}
+  - {fileID: 363161094230359908, guid: 2f4e7aca1e987c244abe6e65e811ea50, type: 3}
+  DaggerRenderers:
+  - {fileID: 21300000, guid: 8d3eba5fc4404d0449985773ce0d4f77, type: 3}
+  - {fileID: 21300000, guid: 16bfc01a845e368489f5a5c0c18b14d0, type: 3}
   KunaiRenderers:
   - {fileID: 21300000, guid: fccc93e23dd7eb84ba962234894fb837, type: 3}
   - {fileID: 21300000, guid: 0a68c33edf4d1fd4a8cb5a889b4a7059, type: 3}
-  ShurikenRenderers: []
+  ShurikenRenderers:
+  - {fileID: 21300000, guid: ffb68296745626442893bce74a085511, type: 3}
+  - {fileID: 21300000, guid: f7b44ad05363e1c41ab86ec6dd582e49, type: 3}
   KunaiIMG: {fileID: 124463391}
+  DaggerIMG: {fileID: 161909458}
+  ShurikenIMG: {fileID: 127849881}
   shurObj: {fileID: 1477876348}
   daggObj: {fileID: 1849604180}
   kunObj: {fileID: 651161087}
@@ -6168,7 +6180,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8878597248209754060, guid: aeb047fd327d5ec4a82387fbf22d01aa, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -15,6 +15,9 @@ public class WeaponsUpg : MonoBehaviour
     public Sprite[] ShurikenRenderers;
 
     public GameObject KunaiIMG;
+    public GameObject DaggerIMG;
+    public GameObject ShurikenIMG;
+
 
 
     public GameObject shurObj;
@@ -44,6 +47,8 @@ public class WeaponsUpg : MonoBehaviour
         rotatePoint = rotatePointT.gameObject;
         shooting = rotatePoint.GetComponent<Shooting>();
         stats = player.GetComponent<Stats>();
+
+        upgText.setInfoWeapons();
     }
 
     public void KunaiUpg()
@@ -92,7 +97,10 @@ public class WeaponsUpg : MonoBehaviour
             else
             {
                 shooting.bullet = ShurikenArray[currLvl - 1];
+                ShurikenIMG.GetComponent<Image>().sprite = ShurikenRenderers[currLvl - 2];
             }
+            stats.damage += ShurikenArray[currLvl - 1].GetComponent<bullet>().damageChange;
+            stats.attackSpeed -= ShurikenArray[currLvl - 1].GetComponent<bullet>().ASpeedChange;
         }
     }
 
@@ -114,7 +122,10 @@ public class WeaponsUpg : MonoBehaviour
             else
             {
                 shooting.bullet = DaggerArray[currLvl - 1];
+                DaggerIMG.GetComponent<Image>().sprite = DaggerRenderers[currLvl - 2];
             }
+            stats.damage += DaggerArray[currLvl - 1].GetComponent<bullet>().damageChange;
+            stats.attackSpeed -= DaggerArray[currLvl - 1].GetComponent<bullet>().ASpeedChange;
         }
     }
 
