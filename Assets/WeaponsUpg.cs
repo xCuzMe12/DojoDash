@@ -13,6 +13,8 @@ public class WeaponsUpg : MonoBehaviour
     public GameObject daggObj;
     public GameObject kunObj;
 
+    TextUpdaterWeapons upgText;
+
 
     GameObject bullet;
     GameObject player;
@@ -28,6 +30,7 @@ public class WeaponsUpg : MonoBehaviour
 
     void Start()
     {
+        upgText = GetComponent<TextUpdaterWeapons>();
         player = GameObject.FindGameObjectWithTag("Player");
         Transform rotatePointT = player.transform.Find("RotatePoint");
         rotatePoint = rotatePointT.gameObject;
@@ -42,6 +45,7 @@ public class WeaponsUpg : MonoBehaviour
             currLvl++;
             stats.gold -= cene[currLvl];
             stats.statsDisplay.Display();
+            upgText.SetText("wpn3", currLvl, lvlCap);
             if (currLvl == 1)
             {
                 shooting.bullet = kunai;
@@ -65,10 +69,11 @@ public class WeaponsUpg : MonoBehaviour
             currLvl++;
             stats.gold -= cene[currLvl];
             stats.statsDisplay.Display();
+            upgText.SetText("wpn1", currLvl, lvlCap);
             if (currLvl == 1)
             {
                 shooting.bullet = shuriken;
-                shurObj.transform.position = new Vector3(630f, shurObj.transform.position.y, shurObj.transform.position.z);
+                shurObj.transform.position = new Vector3(640f, shurObj.transform.position.y, shurObj.transform.position.z);
                 Destroy(daggObj);
                 Destroy(kunObj);
             }
@@ -86,9 +91,11 @@ public class WeaponsUpg : MonoBehaviour
             currLvl++;
             stats.gold -= cene[currLvl];
             stats.statsDisplay.Display();
+            upgText.SetText("wpn2", currLvl, lvlCap);
             if (currLvl == 1)
             {
                 shooting.bullet = dagger;
+                daggObj.transform.position = new Vector3(420f, shurObj.transform.position.y, shurObj.transform.position.z);
                 Destroy(kunObj);
                 Destroy(shurObj);
             }
