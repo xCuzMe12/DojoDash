@@ -2021,17 +2021,17 @@ MonoBehaviour:
   - 8
   - 9
   maxHp: 000000003c00000046000000550000006400000078000000
-  dmg: 0000000007000000090000000c0000000f00000011000000
+  dmg: 000000000200000002000000030000000300000003000000
   pen: 000000003c00000046000000550000006400000078000000
   bodyDmg: 000000000e00000012000000180000001e00000022000000
-  bulletSpeed: 000000000e0000000f000000100000001100000013000000
+  bulletSpeed: 000000000100000001000000010000000100000002000000
   attackSpeed:
   - 0
-  - 0.45
-  - 0.4
-  - 0.35
-  - 0.3
-  - 0.25
+  - 0.05
+  - 0.05
+  - 0.05
+  - 0.05
+  - 0.05
 --- !u!114 &815413687
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5423,9 +5423,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d337af0959c1274f8ff3cccd66614b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shuriken: {fileID: 3431795046329355622, guid: 80288c1b44a90b94d8287b7ed1d19b33, type: 3}
-  dagger: {fileID: 363161094230359908, guid: 04680d6483d14c64fba9a4f3d8d60efe, type: 3}
-  kunai: {fileID: 68348611560708418, guid: 0998cf70486c5914bb2666264526113a, type: 3}
+  KunaiArray:
+  - {fileID: 68348611560708418, guid: 0998cf70486c5914bb2666264526113a, type: 3}
+  - {fileID: 68348611560708418, guid: 3375857b1a1b6004eae4ef63112472a7, type: 3}
+  - {fileID: 68348611560708418, guid: bbbc5bb9a3ef1a044999452b0c84d374, type: 3}
+  ShurikenArray: []
+  DaggerArray: []
+  DaggerRenderers: []
+  KunaiRenderers:
+  - {fileID: 21300000, guid: fccc93e23dd7eb84ba962234894fb837, type: 3}
+  - {fileID: 21300000, guid: 0a68c33edf4d1fd4a8cb5a889b4a7059, type: 3}
+  ShurikenRenderers: []
+  KunaiIMG: {fileID: 124463391}
   shurObj: {fileID: 1477876348}
   daggObj: {fileID: 1849604180}
   kunObj: {fileID: 651161087}
@@ -6159,7 +6168,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8878597248209754060, guid: aeb047fd327d5ec4a82387fbf22d01aa, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

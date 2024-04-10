@@ -35,7 +35,7 @@ public class bullet : MonoBehaviour
     public int lifetime;
     public float ASpeedChange;
     public int damageChange;
-    public float rotationSpeed;
+    [HideInInspector]public float rotationSpeed;
     Vector3 direction;
 
 
@@ -45,7 +45,7 @@ public class bullet : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         stats = player.GetComponent<Stats>();
         rb = GetComponent<Rigidbody2D>();
-        damage = stats.damage;
+        damage = stats.damage + damageChange;
         bulletSpeed = stats.bulletSpeed;
 
 

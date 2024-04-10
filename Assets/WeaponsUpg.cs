@@ -5,9 +5,17 @@ using UnityEngine.UI;
 
 public class WeaponsUpg : MonoBehaviour
 {
-    public GameObject shuriken;
-    public GameObject dagger;
-    public GameObject kunai;
+
+    public GameObject[] KunaiArray;
+    public GameObject[] ShurikenArray;
+    public GameObject[] DaggerArray;
+
+    public Sprite[] DaggerRenderers;
+    public Sprite[] KunaiRenderers;
+    public Sprite[] ShurikenRenderers;
+
+    public GameObject KunaiIMG;
+
 
     public GameObject shurObj;
     public GameObject daggObj;
@@ -48,20 +56,24 @@ public class WeaponsUpg : MonoBehaviour
             upgText.SetText("wpn3", currLvl, lvlCap);
             if (currLvl == 1)
             {
-                shooting.bullet = kunai;
+                shooting.bullet = KunaiArray[0];
                 kunObj.transform.position = new Vector3(195, shurObj.transform.position.y, shurObj.transform.position.z);
                 Destroy(shurObj);
                 Destroy(daggObj);
             }
             else
             {
-
+                shooting.bullet = KunaiArray[currLvl - 1]; //upg skin pa nou prefab das za metk
+                KunaiIMG.GetComponent<Image>().sprite = KunaiRenderers[currLvl - 2];
             }
+            stats.damage += KunaiArray[currLvl - 1].GetComponent<bullet>().damageChange;
+            stats.attackSpeed -= KunaiArray[currLvl - 1].GetComponent<bullet>().ASpeedChange;
         }
 
 
 
     }
+    //TEDVE CIS ISTO UPDATAJ
     public void ShurikenUpg()
     {
         if (currLvl < lvlCap && cene[currLvl + 1] <= stats.gold)
@@ -72,14 +84,14 @@ public class WeaponsUpg : MonoBehaviour
             upgText.SetText("wpn1", currLvl, lvlCap);
             if (currLvl == 1)
             {
-                shooting.bullet = shuriken;
+                shooting.bullet = ShurikenArray[0];
                 shurObj.transform.position = new Vector3(640f, shurObj.transform.position.y, shurObj.transform.position.z);
                 Destroy(daggObj);
                 Destroy(kunObj);
             }
             else
             {
-
+                shooting.bullet = ShurikenArray[currLvl - 1];
             }
         }
     }
@@ -94,14 +106,14 @@ public class WeaponsUpg : MonoBehaviour
             upgText.SetText("wpn2", currLvl, lvlCap);
             if (currLvl == 1)
             {
-                shooting.bullet = dagger;
+                shooting.bullet = DaggerArray[0];
                 daggObj.transform.position = new Vector3(420f, shurObj.transform.position.y, shurObj.transform.position.z);
                 Destroy(kunObj);
                 Destroy(shurObj);
             }
             else
             {
-
+                shooting.bullet = DaggerArray[currLvl - 1];
             }
         }
     }
