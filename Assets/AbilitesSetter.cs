@@ -19,13 +19,23 @@ public class AbilitesSetter : MonoBehaviour
         SceneManager.LoadScene(0);
     }
 
-    //abilites -POWER
+    //POWER
+    //MEGABULLET
     public ScriptableObject[] MegaBullet;
+    public Sprite[] MegaBulletSprites;
+    int[] MegaBulletPrice = {75, 100, 125}; //te stvari pazi, k ce spreminjas pol kasnej se loh kej zjebe
+    //BOMB
     public ScriptableObject[] Bomb;
-    public ScriptableObject[] abilityPower; //za naprej
-    public void MegaBulletButton() //nared za vse 3 type
+    public Sprite[] BombSprites;
+    public int[] BombPrice;
+    //
+    public ScriptableObject[] abilityPower; 
+
+    public void MegaBulletButton() 
     {
         eventScript.abilityPower = MegaBullet;
+        eventScript.PowerSprites = MegaBulletSprites;
+        eventScript.PowerPrice = MegaBulletPrice;
     }
     public void BombButton()
     {

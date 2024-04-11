@@ -14,6 +14,13 @@ public class EventHadler : MonoBehaviour
     public ScriptableObject[] abilityUtility;
     public ScriptableObject[] abilityPower;
 
+    public Sprite[] PowerSprites;
+    public Sprite[] UtilitySprites;
+    public Sprite[] AdaptiveSprites;
+
+    public int[] PowerPrice;
+    public int[] UtilityPrice;
+    public int[] AdaptivePrice;
 
     //vse kar rab biti crossScene
 

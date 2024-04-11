@@ -769,13 +769,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0928cfcc43d98c24e8f7349b4440ac11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  eventHandler: {fileID: 0}
   MegaBullet:
   - {fileID: 11400000, guid: a668f3b279e19b44b9569cb95d159bdd, type: 2}
   - {fileID: 11400000, guid: 88a130b2ff89ef24fa39a7c028e657e8, type: 2}
   - {fileID: 11400000, guid: 036df67a024aee24785b13b446a16584, type: 2}
+  MegaBulletSprites:
+  - {fileID: 21300000, guid: f1a545e26592e8b4faf7007160e98caa, type: 3}
+  - {fileID: 21300000, guid: 8cccdba2081721649a0df137c82589fe, type: 3}
+  - {fileID: 21300000, guid: c697f239b463204439abf23bbe99fecb, type: 3}
   Bomb: []
+  BombSprites: []
+  BombPrice: 
   abilityPower: []
+  Turret: []
+  GrapplingHook: []
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

@@ -4979,5 +4979,5 @@ MonoBehaviour:
   angleOffset: 0
   stats: {fileID: 0}
   bulletSpeed: 2
-  damage: 250
-  lifetime: 3
+  damage: 500
+  lifetime: 4
