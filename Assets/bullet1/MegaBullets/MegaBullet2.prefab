@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 8539751058599968008}
   - component: {fileID: 4734158966223128903}
   m_Layer: 0
-  m_Name: MegaBullet1
+  m_Name: MegaBullet2
   m_TagString: MegaBullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -78,7 +78,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: f1a545e26592e8b4faf7007160e98caa, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8cccdba2081721649a0df137c82589fe, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -4978,6 +4978,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   angleOffset: 0
   stats: {fileID: 0}
-  bulletSpeed: 3
-  damage: 60
-  lifetime: 3
+  bulletSpeed: 4
+  damage: 100
+  lifetime: 2

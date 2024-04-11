@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 19cafa3991bb0a6438739423bc82f945, type: 3}
-  m_Name: MegaBullet
+  m_Name: MegaBullet 2
   m_EditorClassIdentifier: 
   name: MegaBullet
-  cooldownTime: 5
+  cooldownTime: 4
   activeTime: 3
-  BulletPrefab: {fileID: 1962971501940932394, guid: b844898874344f84e86a48dfe6908307, type: 3}
+  BulletPrefab: {fileID: 1962971501940932394, guid: df6cfdd710224304b9207f4691e6d0c5, type: 3}
   spawnDistance: 1
