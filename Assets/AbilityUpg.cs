@@ -34,6 +34,9 @@ public class AbilityUpg : MonoBehaviour
     public GameObject player;
     Stats stats;
     AbilityHolder abilityHolder;
+    AbilityHolderADAPTIVE abilityHolderAdaptive;
+    AbilityHolderUtility abilityHolderUtility;
+
 
     GameObject eventHandler;
     EventHadler eventScript;
@@ -42,30 +45,33 @@ public class AbilityUpg : MonoBehaviour
 
         eventHandler = GameObject.FindGameObjectWithTag("EventHandler");
         eventScript = eventHandler.GetComponent<EventHadler>();
+
         abilityPower = eventScript.abilityPower;
         PowerSprites = eventScript.PowerSprites; 
         PowerPrice = eventScript.PowerPrice;
 
+        abilityAdaptive = eventScript.abilityAdaptive;
+        AdaptiveSprites = eventScript.AdaptiveSprites;
+        AdaptivePrice = eventScript.AdaptivePrice;
 
         //UtilityPrice = eventScript.UtilityPrice;
-        //AdaptivePrice = eventScript.AdaptivePrice;
         //UtilitySprites = eventScript.UtilitySprites; 
-        //AdaptiveSprites = eventScript.AdaptiveSprites;
         //abilityUtility = eventScript.abilityUtility; - ko dodas
-        //abilityAdaptive = eventScript.abilityAdaptive;
 
         PowerIMG.GetComponent<Image>().sprite = PowerSprites[0];
+        AdaptiveIMG.GetComponent<Image>().sprite = AdaptiveSprites[0];
         //UtilityIMG.GetComponent<Image>().sprite = UtilitySprites[0];
-        //AdaptiveIMG.GetComponent<Image>().sprite = AdaptiveSprites[0];
 
 
         abilityHolder = player.GetComponent<AbilityHolder>();
+        abilityHolderAdaptive = player.GetComponent<AbilityHolderADAPTIVE>();
+        //abilityHolderUtility = player.GetComponent<AbilityHolderUtility>();
         stats = player.GetComponent<Stats>();
 
         abilityUpgText = GetComponent<TextUpdaterAbilities>();
         abilityUpgText.SetText("power", 0, 3, PowerPrice[0]);
         abilityUpgText.SetText("utility", 0, 3, 0);//UtilityPrice[0]
-        abilityUpgText.SetText("adaptive", 0, 3, 0);//AdaptivePrice[0] -- to zamenji k mas
+        abilityUpgText.SetText("adaptive", 0, 3, AdaptivePrice[0]); 
     }
 
 
@@ -93,11 +99,45 @@ public class AbilityUpg : MonoBehaviour
 
     public void UtilityAbilityUpg()
     {
+        if (utilityLvl < 3 && UtilityPrice[utilityLvl] <= stats.gold)
+        {
+            stats.gold -= UtilityPrice[utilityLvl];
+            abilityHolderUtility.ability = (Ability)abilityUtility[utilityLvl];
+            UtilityIMG.GetComponent<Image>().sprite = UtilitySprites[utilityLvl];
+            utilityLvl++;
 
+            if (utilityLvl == 3)
+            {
+                abilityUpgText.SetText("utilityMAX", 0, 0, 0);
+
+            }
+            else
+            {
+                abilityUpgText.SetText("utility", utilityLvl, 3, UtilityPrice[utilityLvl]);
+            }
+            stats.statsDisplay.Display();
+        }
     }
     public void AdaptiveAbilityUpg()
     {
+        if (adaptiveLvl < 3 && AdaptivePrice[adaptiveLvl] <= stats.gold)
+        {
+            stats.gold -= AdaptivePrice[adaptiveLvl];
+            abilityHolderAdaptive.ability = (Ability)abilityAdaptive[adaptiveLvl];
+            AdaptiveIMG.GetComponent<Image>().sprite = AdaptiveSprites[adaptiveLvl];
+            adaptiveLvl++;
 
+            if (adaptiveLvl == 3)
+            {
+                abilityUpgText.SetText("adaptiveMAX", 0, 0, 0);
+
+            }
+            else
+            {
+                abilityUpgText.SetText("adaptive", adaptiveLvl, 3, AdaptivePrice[adaptiveLvl]);
+            }
+            stats.statsDisplay.Display();
+        }
     }
 
 

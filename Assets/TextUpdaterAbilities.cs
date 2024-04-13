@@ -40,10 +40,10 @@ public class TextUpdaterAbilities : MonoBehaviour
                 powerAbilityText.text = "MAXED OUT";
                 break;
             case "utilityMAX":
-                powerAbilityText.text = "MAXED OUT";
+                utilityAbilityText.text = "MAXED OUT";
                 break;
             case "adaptiveMAX":
-                powerAbilityText.text = "MAXED OUT";
+                adaptiveAbilityText.text = "MAXED OUT";
                 break;
         }
     }

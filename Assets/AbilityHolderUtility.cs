@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AbilityHolder : MonoBehaviour
+public class AbilityHolderUtility : MonoBehaviour
 {
     public Ability ability;
     float cooldownTime;

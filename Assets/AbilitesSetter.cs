@@ -24,19 +24,17 @@ public class AbilitesSetter : MonoBehaviour
     public ScriptableObject[] MegaBullet;
     public Sprite[] MegaBulletSprites;
     int[] MegaBulletPrice = {75, 100, 125}; //te stvari pazi, k ce spreminjas pol kasnej se loh kej zjebe
-    //BOMB
-    public ScriptableObject[] Bomb;
-    public Sprite[] BombSprites;
-    public int[] BombPrice;
-    //
-    public ScriptableObject[] abilityPower; 
-
-    public void MegaBulletButton() 
+    public void MegaBulletButton()
     {
         eventScript.abilityPower = MegaBullet;
         eventScript.PowerSprites = MegaBulletSprites;
         eventScript.PowerPrice = MegaBulletPrice;
     }
+
+    //BOMB
+    public ScriptableObject[] Bomb;
+    public Sprite[] BombSprites;
+    public int[] BombPrice;
     public void BombButton()
     {
         eventScript.abilityPower = Bomb;
@@ -55,7 +53,20 @@ public class AbilitesSetter : MonoBehaviour
         eventScript.abilityUtility = GrapplingHook;
     }
 
-    // abilites -BOOST
+    // abilites -ADAPTIVE
+    //TELEPORT
+    public ScriptableObject[] Teleport;
+    public Sprite[] TeleportSprites;
+    int[] TeleportPrice = { 100, 150, 250 };
+    public void TeleportButton()
+    {
+        eventScript.abilityAdaptive = Teleport;
+        eventScript.AdaptiveSprites = TeleportSprites;
+        eventScript.AdaptivePrice = TeleportPrice;
+    }
+
+
+
 
 
 
