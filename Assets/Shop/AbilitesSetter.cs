@@ -22,6 +22,7 @@ public class AbilitesSetter : MonoBehaviour
     {
         eventHandler = GameObject.FindGameObjectWithTag("EventHandler");
         eventScript = eventHandler.GetComponent<EventHadler>();
+
     }
     public void BackToMenu()
     {

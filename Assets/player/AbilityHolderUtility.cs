@@ -60,7 +60,7 @@ public class AbilityHolderUtility : MonoBehaviour
 
             }
         }
-        catch (Exception ex)
+        catch (Exception)
         {
             Debug.LogError("No Ability selected yet");
         }
