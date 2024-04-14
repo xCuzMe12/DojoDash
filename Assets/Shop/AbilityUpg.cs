@@ -54,23 +54,23 @@ public class AbilityUpg : MonoBehaviour
         AdaptiveSprites = eventScript.AdaptiveSprites;
         AdaptivePrice = eventScript.AdaptivePrice;
 
-        //UtilityPrice = eventScript.UtilityPrice;
-        //UtilitySprites = eventScript.UtilitySprites; 
-        //abilityUtility = eventScript.abilityUtility; - ko dodas
+        UtilityPrice = eventScript.UtilityPrice;
+        UtilitySprites = eventScript.UtilitySprites; 
+        abilityUtility = eventScript.abilityUtility; 
 
         PowerIMG.GetComponent<Image>().sprite = PowerSprites[0];
         AdaptiveIMG.GetComponent<Image>().sprite = AdaptiveSprites[0];
-        //UtilityIMG.GetComponent<Image>().sprite = UtilitySprites[0];
+        UtilityIMG.GetComponent<Image>().sprite = UtilitySprites[0];
 
 
         abilityHolder = player.GetComponent<AbilityHolder>();
         abilityHolderAdaptive = player.GetComponent<AbilityHolderADAPTIVE>();
-        //abilityHolderUtility = player.GetComponent<AbilityHolderUtility>();
+        abilityHolderUtility = player.GetComponent<AbilityHolderUtility>();
         stats = player.GetComponent<Stats>();
 
         abilityUpgText = GetComponent<TextUpdaterAbilities>();
         abilityUpgText.SetText("power", 0, 3, PowerPrice[0]);
-        abilityUpgText.SetText("utility", 0, 3, 0);//UtilityPrice[0]
+        abilityUpgText.SetText("utility", 0, 3, UtilityPrice[0]);
         abilityUpgText.SetText("adaptive", 0, 3, AdaptivePrice[0]); 
     }
 

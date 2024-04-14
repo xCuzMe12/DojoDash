@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using static UnityEngine.GraphicsBuffer;
 
 
 
@@ -43,20 +44,27 @@ public class AbilitesSetter : MonoBehaviour
     //BOMB
     public ScriptableObject[] Bomb;
     public Sprite[] BombSprites;
-    public int[] BombPrice;
+    int[] BombPrice;
     public void BombButton()
     {
         eventScript.abilityPower = Bomb;
     }
 
     // abilites -UTILITY (ITEMI, OBEKTI)
-    public ScriptableObject[] Turret;
+    public ScriptableObject[] Dummy;
+    public Sprite[] DummySprites;
+    int[] DummyPrice = {100, 150, 250};
+    public void DummyButton()
+    {
+        eventScript.abilityUtility = Dummy;
+        eventScript.UtilitySprites = DummySprites;
+        eventScript.UtilityPrice = DummyPrice;
+        utilitySelected.sprite = DummySprites[0];
+    }
+
+
     public ScriptableObject[] GrapplingHook;
 
-    public void TurretButton()
-    {
-        eventScript.abilityUtility = Turret;
-    }
     public void GrapplingButton()
     {
         eventScript.abilityUtility = GrapplingHook;
