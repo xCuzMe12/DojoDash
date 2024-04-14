@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+
 
 
 public class AbilitesSetter : MonoBehaviour
@@ -9,6 +11,12 @@ public class AbilitesSetter : MonoBehaviour
 
     GameObject eventHandler;
     EventHadler eventScript;
+
+    public Image powerSelected;
+    public Image utilitySelected;
+    public Image adaptiveSelected;
+
+
     void Start()
     {
         eventHandler = GameObject.FindGameObjectWithTag("EventHandler");
@@ -29,6 +37,7 @@ public class AbilitesSetter : MonoBehaviour
         eventScript.abilityPower = MegaBullet;
         eventScript.PowerSprites = MegaBulletSprites;
         eventScript.PowerPrice = MegaBulletPrice;
+        powerSelected.sprite = MegaBulletSprites[0];
     }
 
     //BOMB
@@ -63,6 +72,7 @@ public class AbilitesSetter : MonoBehaviour
         eventScript.abilityAdaptive = Teleport;
         eventScript.AdaptiveSprites = TeleportSprites;
         eventScript.AdaptivePrice = TeleportPrice;
+        adaptiveSelected.sprite = TeleportSprites[0];
     }
 
 
