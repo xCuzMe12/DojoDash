@@ -105,6 +105,7 @@ MonoBehaviour:
   - Enemy2
   shootingRange: 10
   FireSpeed: 0.5
+  wayOfShooting: 1
 --- !u!58 &1499317191823820078
 CircleCollider2D:
   m_ObjectHideFlags: 0

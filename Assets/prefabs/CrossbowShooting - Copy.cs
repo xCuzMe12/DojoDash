@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class CrossbowShooting : MonoBehaviour
@@ -12,6 +13,7 @@ public class CrossbowShooting : MonoBehaviour
     public float shootingRange = 10f; // Maximum distance to look for targets
     public float FireSpeed;
     private float currentTime;
+    bool wayOfShooting = true;
 
     // Start is called before the first frame update
     void Start()
@@ -25,14 +27,17 @@ public class CrossbowShooting : MonoBehaviour
         if (currentTime >= FireSpeed)
         {   
             currentTime = 0;
-            // Find the nearest target
             GameObject nearestTarget = FindNearestTarget();
 
-            // If a target is found, shoot at it
             if (nearestTarget != null)
             {
                 ShootAtTarget(nearestTarget.transform.position);
             }
+        }
+
+        if (Input.GetKeyDown(KeyCode.N))
+        {
+            wayOfShooting = !wayOfShooting;
         }
     }
 
@@ -47,25 +52,14 @@ public class CrossbowShooting : MonoBehaviour
 
             foreach (GameObject target in targets)
             {
-                // Check if the target is the owner object
-                if (target != null)
+                if (target != null && target != gameObject) // Check if target is not null and not the same object as this one
                 {
-                    // Check for collisions with the owner's collider
-                    Collider2D targetCollider = target.GetComponent<Collider2D>();
-                    //Collider2D ownerCollider = owner.GetComponent<Collider2D>();
-
-                    
-                        // Calculate distance between this object and target
-                        float distance = Vector3.Distance(transform.position, target.transform.position);
-                       
-                        // If this target is closer than the current nearest target
-                        if (distance < minDistance && distance <= shootingRange)
-                        {
-                            // Update nearest target and minimum distance
-                            minDistance = distance;
-                            nearestTarget = target;
-                        }
-                    
+                    float distance = Vector3.Distance(transform.position, target.transform.position);
+                    if (distance < minDistance && distance <= shootingRange)
+                    {
+                        minDistance = distance;
+                        nearestTarget = target;
+                    }
                 }
             }
         }
@@ -73,36 +67,36 @@ public class CrossbowShooting : MonoBehaviour
         return nearestTarget;
     }
 
+
     void ShootAtTarget(Vector3 targetPosition)
     {
-        // Calculate the direction towards the target
-        Vector3 direction = (targetPosition - transform.position).normalized;
-
-        // Instantiate a particle at the current position
-        GameObject particle = Instantiate(particlePrefab, transform.position, Quaternion.identity);
-
-        // Get the particle system from the particle prefab
-        ParticleSystem particleSystem = particle.GetComponent<ParticleSystem>();
-
-        // If the particle system is found, play it and destroy the particle after its duration
-        if (particleSystem != null)
+        if (wayOfShooting) // closest
         {
-            particleSystem.Play();
-            Destroy(particle, particleSystem.main.duration);
+            GameObject bullet = Instantiate(particlePrefab, transform.position, Quaternion.identity);
+            bullet.GetComponent<bullet>().KamStreljati = targetPosition - transform.position;
         }
-        else
+        else //v smer miske
         {
-            // If the particle system component is not found, destroy the particle immediately
-            Destroy(particle);
+            Vector3 direction = (targetPosition - transform.position).normalized;
+            GameObject particle = Instantiate(particlePrefab, transform.position, Quaternion.identity);
+            ParticleSystem particleSystem = particle.GetComponent<ParticleSystem>();
+            if (particleSystem != null)
+            {
+                particleSystem.Play();
+                Destroy(particle, particleSystem.main.duration);
+            }
+            else
+            {
+                Destroy(particle);
+            }
+            Vector3 particleForward = direction;
+            particle.transform.rotation = Quaternion.LookRotation(Vector3.forward, particleForward);
         }
 
-        // Rotate the particle towards the target position
-        Vector3 particleForward = direction;
-        particle.transform.rotation = Quaternion.LookRotation(Vector3.forward, particleForward);
     }
+
     IEnumerator DeathTimer(float x)
     {
-
         yield return new WaitForSeconds(x);
         Destroy(gameObject);
     }
