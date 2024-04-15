@@ -99,7 +99,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   aliveTime: 10
-  particlePrefab: {fileID: 9027037782656255955, guid: 66c757228c688af4c8aed07e552553c7, type: 3}
+  particlePrefab: {fileID: 3431795046329355622, guid: 4fd8199788b78464ca3e9ca5ddc44f8c, type: 3}
   targetTags:
   - Enemy
   - Enemy2

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 
 //REPI PAZI - TE 4 OSNOVNI VSI INHERITAJO IZ TEGA, UNI LVL2 UPGRADE PA IZ LVL1 NE IZ TEGA
@@ -20,7 +21,7 @@ public class Shooting : MonoBehaviour
     public GameObject player;
     private Stats stats;
     private bullet bulletStats;
-    
+
 
     void Start()
     {
@@ -77,56 +78,69 @@ public class Shooting : MonoBehaviour
 
     }
 
-            
 
 
 
-    
+
+
     public void Shoot(string upg)
     {
-
-        switch (upg)
+        try
         {
-            //TIER I
-            case "00":
-                SpawnBullet(0f);
-                break;
-            case "11":
-                SpawnBullet11L(0f, 0.5f);
-                SpawnBullet11R(0f, 0.5f);
-                break;
-            case "12":
-                SpawnBullet(0f);
-                SpawnBullet(30f);
-                SpawnBullet(-30f);
-                break;
-            case "13":
-                StartCoroutine(Pavza(0.08f));
-                break;
-            case "14":
-                SpawnBullet(0f);
-                SpawnBullet(25f, -0.3f);
-                SpawnBullet(-25f, -0.3f);
-                break;
+            switch (upg.Substring(0, 2))
+            {
+                //TIER I
+                case "00":
+                    SpawnBullet(0f);
+                    break;
+                case "11":
+                    SpawnBullet11L(0f, 0.5f);
+                    SpawnBullet11R(0f, 0.5f);
+                    break;
+                case "12":
+                    SpawnBullet(0f);
+                    SpawnBullet(30f);
+                    SpawnBullet(-30f);
+                    break;
+                case "13":
+                    StartCoroutine(Pavza(0.08f));
+                    break;
+                case "14":
+                    SpawnBullet(0f);
+                    SpawnBullet(25f, -0.3f);
+                    SpawnBullet(-25f, -0.3f);
+                    break;
+            }
+            //TIER II           //SpawnBullet(0f, -0.3f); SPAWN RIKVERC, PRVA CIFRA OFFSET KOTA, DRUGO PUSTI SKOS TKO
 
-            //SpawnBullet(0f, -0.3f); SPAWN RIKVERC, PRVA CIFRA OFFSET KOTA, DRUGO PUSTI SKOS TKO
-
-            //TIER II
-            case "21":
-                SpawnBullet21L(0f, 0.5f);
-                SpawnBullet21R(0f, 0.5f);
-                break;
-            case "22":
-                break;
-            case "23":
-                break;
-            case "24":
-                break;
-
+            if (upg.Length > 2)
+            {
+                switch (upg.Substring(2, 2))
+                {
+                    //TIER II
+                    case "21":
+                        SpawnBullet21L(0f, 0.5f);
+                        SpawnBullet21R(0f, 0.5f);
+                        break;
+                    case "22":
+                        SpawnBullet22R(0f, -0.3f);
+                        SpawnBullet22L(0f, -0.3f);
+                        break;
+                    case "23":
+                        break;
+                    case "24":
+                        SpawnCircleBullets(0.7f, 4); //to je insane
+                        break;
+                }
+            }
         }
+        catch (Exception) { }
+
+
+
     }
     //basic, 12, vse k so dependant na mousepos
-    void SpawnBullet(float angleOffset) 
+    void SpawnBullet(float angleOffset)
     {
         GameObject newBullet = Instantiate(bullet, transform.position + bulletTransform.up * 1f, Quaternion.identity);
         newBullet.GetComponent<bullet>().angleOffset = angleOffset;
@@ -162,7 +176,7 @@ public class Shooting : MonoBehaviour
         newBullet.GetComponent<bullet>().angleOffset = angleOffset;
         newBullet.GetComponent<bullet>().KamStreljati = transform.position - mousePos;
     }
-    
+
 
 
     //TIER II
@@ -180,8 +194,61 @@ public class Shooting : MonoBehaviour
         GameObject newBullet = Instantiate(bullet, spawnPosition, Quaternion.identity);
         newBullet.GetComponent<bullet>().angleOffset = angleOffset;
     }
+    //22
+    void SpawnBullet22R(float angleOffset, float offsetDistance)
+    {
+        Vector3 spawnPosition = transform.position + bulletTransform.right * offsetDistance * 0.8f + bulletTransform.up * 2 * offsetDistance;
+        GameObject newBullet = Instantiate(bullet, spawnPosition, Quaternion.identity);
+        newBullet.GetComponent<bullet>().angleOffset = angleOffset;
+        newBullet.GetComponent<bullet>().KamStreljati = transform.position - mousePos;
+    }
+    void SpawnBullet22L(float angleOffset, float offsetDistance)
+    {
+        Vector3 spawnPosition = transform.position - bulletTransform.right * offsetDistance * 0.8f + bulletTransform.up * 2 * offsetDistance;
+        GameObject newBullet = Instantiate(bullet, spawnPosition, Quaternion.identity);
+        newBullet.GetComponent<bullet>().angleOffset = angleOffset;
+        newBullet.GetComponent<bullet>().KamStreljati = transform.position - mousePos;
+    }
+
+    //23
 
 
 
+    //24
+    void SpawnCircleBullets(float radius, int numBullets)
+    {
+        float angleIncrement = 360f / numBullets;
+        for (int i = 0; i < numBullets; i++)
+        {
+            float angle = i * angleIncrement * Mathf.Deg2Rad; // Convert degrees to radians
+            float spawnPosition = radius; // Assuming spawnPosition represents distance from player
+            SpawnBulletC(angle + 45 * Mathf.Deg2Rad, spawnPosition);
+        }
+    }
 
+    void SpawnBulletC(float angle, float spawnPosition1)
+    {
+        // Get the player's rotation in radians
+        float playerRotation = transform.eulerAngles.z * Mathf.Deg2Rad;
+
+        // Adjust the angle of the bullet based on the player's rotation
+        float adjustedAngle = angle + playerRotation;
+
+        // Calculate the position of the bullet based on the angle and spawnPosition
+        float spawnX = transform.position.x + spawnPosition1 * Mathf.Cos(adjustedAngle);
+        float spawnY = transform.position.y + spawnPosition1 * Mathf.Sin(adjustedAngle);
+        Vector3 spawnPosition = new Vector3(spawnX, spawnY, 0f);
+
+        // Calculate the movement direction of the bullet based on its angle
+        Vector3 movementDirection = new Vector3(Mathf.Cos(adjustedAngle), Mathf.Sin(adjustedAngle), 0f);
+
+        // Spawn the bullet at the calculated position
+        GameObject newBullet = Instantiate(bullet, spawnPosition, Quaternion.identity);
+
+        // Set the movement direction of the bullet
+        newBullet.GetComponent<bullet>().KamStreljati = movementDirection;
+
+        // Set any additional properties of the bullet
+        //...
+    }
 }

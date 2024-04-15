@@ -18,6 +18,7 @@ TagManager:
   - Canvas
   - border
   - EventHandler
+  - upg2
   layers:
   - Default
   - TransparentFX

@@ -77,9 +77,7 @@ public class bullet : MonoBehaviour
             transform.rotation = Quaternion.Euler(0, 0, angleToTarget + 90);
         }
         StartCoroutine(Destruction());
-         
     }
-
 
 
     IEnumerator Destruction()

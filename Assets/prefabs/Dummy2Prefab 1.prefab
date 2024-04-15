@@ -99,13 +99,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   aliveTime: 7
-  particlePrefab: {fileID: 9027037782656255955, guid: 66c757228c688af4c8aed07e552553c7, type: 3}
+  particlePrefab: {fileID: 3431795046329355622, guid: e5a9ae3b190a49543ba4ca38fcc30278, type: 3}
   targetTags:
   - Enemy
   - Enemy2
   shootingRange: 15
   FireSpeed: 0.4
-  wayOfShooting: 1
 --- !u!58 &1499317191823820078
 CircleCollider2D:
   m_ObjectHideFlags: 0
