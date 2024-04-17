@@ -40,8 +40,12 @@ public class AbilityUpg : MonoBehaviour
 
     GameObject eventHandler;
     EventHadler eventScript;
+
+    HUDManager hudManager;
     void Start()
     {
+        hudManager = GameObject.FindGameObjectWithTag("HUD").GetComponent<HUDManager>();
+
 
         eventHandler = GameObject.FindGameObjectWithTag("EventHandler");
         eventScript = eventHandler.GetComponent<EventHadler>();
@@ -82,6 +86,7 @@ public class AbilityUpg : MonoBehaviour
             stats.gold -= PowerPrice[powerLvl];
             abilityHolder.ability = (Ability)abilityPower[powerLvl];
             PowerIMG.GetComponent<Image>().sprite = PowerSprites[powerLvl];
+            hudManager.updatePower();
             powerLvl++;
 
             if (powerLvl == 3)
@@ -104,6 +109,7 @@ public class AbilityUpg : MonoBehaviour
             stats.gold -= UtilityPrice[utilityLvl];
             abilityHolderUtility.ability = (Ability)abilityUtility[utilityLvl];
             UtilityIMG.GetComponent<Image>().sprite = UtilitySprites[utilityLvl];
+            hudManager.updateUtility();
             utilityLvl++;
 
             if (utilityLvl == 3)
@@ -125,6 +131,7 @@ public class AbilityUpg : MonoBehaviour
             stats.gold -= AdaptivePrice[adaptiveLvl];
             abilityHolderAdaptive.ability = (Ability)abilityAdaptive[adaptiveLvl];
             AdaptiveIMG.GetComponent<Image>().sprite = AdaptiveSprites[adaptiveLvl];
+            hudManager.updateAdaptive();
             adaptiveLvl++;
 
             if (adaptiveLvl == 3)
