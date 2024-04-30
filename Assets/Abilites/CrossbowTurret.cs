@@ -13,7 +13,7 @@ public class CrossbowTurret : Ability
     {
         // Get the position of the mouse cursor in world space
         Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        mousePosition.z = 15; // Ensure the z-coordinate is 0 (on the ground)
+        mousePosition.z = 0f; // Ensure the z-coordinate is 0 (on the ground)
 
         // Calculate the direction from the player to the mouse position
         Vector3 direction = mousePosition - player.transform.position;

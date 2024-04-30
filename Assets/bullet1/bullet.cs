@@ -35,7 +35,7 @@ public class bullet : MonoBehaviour
     public int lifetime;
     public float ASpeedChange;
     public int damageChange;
-    [HideInInspector]public float rotationSpeed;
+    public float rotationSpeed;
     Vector3 direction;
 
 
@@ -45,7 +45,7 @@ public class bullet : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         stats = player.GetComponent<Stats>();
         rb = GetComponent<Rigidbody2D>();
-        damage = stats.damage + damageChange;
+        damage = stats.damage;
         bulletSpeed = stats.bulletSpeed;
 
 
@@ -77,7 +77,9 @@ public class bullet : MonoBehaviour
             transform.rotation = Quaternion.Euler(0, 0, angleToTarget + 90);
         }
         StartCoroutine(Destruction());
+         
     }
+
 
 
     IEnumerator Destruction()

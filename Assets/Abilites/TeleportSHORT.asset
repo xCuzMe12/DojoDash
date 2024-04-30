@@ -16,4 +16,4 @@ MonoBehaviour:
   cooldownTime: 3
   activeTime: 1
   distance: 4
-  shadow: {fileID: 6847499599944646803, guid: 4477c856469632344a6a16fccf317b47, type: 3}
+  shadow: {fileID: 2372573537424907163, guid: aa0190eaca59f99439d4d20403bc47a9, type: 3}

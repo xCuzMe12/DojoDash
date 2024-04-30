@@ -97,7 +97,7 @@ public class StatsUpgrade : MonoBehaviour
             if (attackSpeedI < lvlCap && shema.cost[attackSpeedI + 1] <= stats.gold)
             {
                 attackSpeedI++;
-                stats.attackSpeed -= shema.attackSpeed[attackSpeedI];
+                stats.attackSpeed = shema.attackSpeed[attackSpeedI];
                 stats.gold -= shema.cost[attackSpeedI];
                 numOfUpg++;
                 textUpdater.SetText("attackSpeed", attackSpeedI, lvlCap);
@@ -142,7 +142,7 @@ public class StatsUpgrade : MonoBehaviour
             if (DMGI < lvlCap && shema.cost[DMGI + 1] <= stats.gold)
             {
                 DMGI++;
-                stats.damage += shema.dmg[DMGI];
+                stats.damage = shema.dmg[DMGI];
                 stats.gold -= shema.cost[DMGI];
                 numOfUpg++;
                 textUpdater.SetText("damage", DMGI, lvlCap);
@@ -166,7 +166,7 @@ public class StatsUpgrade : MonoBehaviour
             if (bulletSpeedI < lvlCap && shema.cost[bulletSpeedI + 1] <= stats.gold)
             {
                 bulletSpeedI++;
-                stats.bulletSpeed += shema.bulletSpeed[bulletSpeedI];
+                stats.bulletSpeed = shema.bulletSpeed[bulletSpeedI];
                 stats.gold -= shema.cost[bulletSpeedI];
                 numOfUpg++;
                 textUpdater.SetText("bulletSpeed", bulletSpeedI, lvlCap);

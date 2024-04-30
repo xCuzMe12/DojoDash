@@ -14,7 +14,7 @@ public class StatsScheme : MonoBehaviour
 
     public int[] maxHp = { 0, 60, 70, 85, 100, 120 };
 
-    public int[] dmg = { 0, 2, 2, 3, 3, 3 };
+    public int[] dmg = { 0, 7, 9, 12, 15, 17 };
 
     public int[] pen = { 0, 60, 70, 85, 100, 120 };
 

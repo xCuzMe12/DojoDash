@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -22,50 +21,44 @@ public class AbilityHolder : MonoBehaviour
     {
         //ability.Activate(gameObject) - ta fja se klice na objektu na kermu je ta script prjtrjen
 
-        try
+
+        //SWITCHANJE MED TREMI STATE-I  
+        switch (state)
         {
-            //SWITCHANJE MED TREMI STATE-I  
-            switch (state)
-            {
-                case AbilityState.ready:
-                    if (Input.GetKeyDown(key))
-                    {
-                        ability.Activate(gameObject); // ce mamo ready pa prtisnemo, pol se activira
-                        state = AbilityState.active;
-                        activeTime = ability.activeTime; //kok casa traja ability, to mas v unih pol specificnih scriptih tza vsak ab
-                    }
-                    break;
-                case AbilityState.active:
-                    if (activeTime > 0)
-                    {
-                        activeTime -= Time.deltaTime;
-                    }
-                    else
-                    {
-                        state = AbilityState.cooldown;
-                        cooldownTime = ability.cooldownTime;
-                    }
-                    break;
-                case AbilityState.cooldown:
-                    if (cooldownTime > 0)
-                    {
-                        cooldownTime -= Time.deltaTime;
-                    }
-                    else
-                    {
-                        state = AbilityState.ready;
-                    }
-                    break;
+            case AbilityState.ready:
+                if (Input.GetKeyDown(key)) {
+                    ability.Activate(gameObject); // ce mamo ready pa prtisnemo, pol se activira
+                    state = AbilityState.active;
+                    activeTime = ability.activeTime; //kok casa traja ability, to mas v unih pol specificnih scriptih tza vsak ab
+                }
+                break;
+            case AbilityState.active:
+                if (activeTime > 0)
+                {
+                    activeTime -= Time.deltaTime;
+                }
+                else
+                {
+                    state = AbilityState.cooldown;
+                    cooldownTime = ability.cooldownTime;                    
+                }
+                break;
+            case AbilityState.cooldown:
+                if (cooldownTime > 0)
+                {
+                    cooldownTime -= Time.deltaTime;
+                }
+                else
+                {
+                    state = AbilityState.ready;                  
+                }
+                break;
 
 
-            }
-        }
-        catch (Exception )
-        {
-            Debug.LogError("No Ability selected yet");
         }
 
 
 
+        
     }
 }
