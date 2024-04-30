@@ -17,6 +17,7 @@ TagManager:
   - Shop
   - Canvas
   - border
+  - GrapplingHook
   layers:
   - Default
   - TransparentFX
