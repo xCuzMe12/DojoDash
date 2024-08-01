@@ -1,0 +1,110 @@
+// switch page buttoni, morjo imet data-target-attribute='pageID', ker stem switchas page
+
+function setupLongPressForAllButtons() {
+    const buttons = document.querySelectorAll('button');
+
+    buttons.forEach(button => {
+        button.addEventListener('mousedown', startPress);
+        button.addEventListener('touchstart', startPress);
+        button.addEventListener('mouseup', endPress);
+        button.addEventListener('touchend', endPress);
+    });
+
+    currentPage = document.querySelector('.content-container:not([hidden])');
+    function startPress(event) {
+        event.preventDefault();
+        const pressedButton = event.target;
+        const targetPageId = event.target.getAttribute('data-target-page');
+        if (targetPageId) {
+            pressedButton.classList.add('clicked');
+            if (currentPage) {
+                currentPage.classList.add('swooshOutToLeft')
+            }
+            timeout = setTimeout(() => {
+                showPage(targetPageId);
+                console.log('you are on page:' + targetPageId)
+                currentPage.classList.remove('swooshOutToLeft');
+                removeClickedClassFromAllButtons();
+            }, LONG_PRESS_DURATION); 
+
+        }
+    }
+    removeClickedClassFromAllButtons();
+    function endPress(event) {
+        clearTimeout(timeout);
+        const pressedButton = event.target;
+        pressedButton.classList.remove('clicked');
+        currentPage.classList.remove('swooshOutToLeft');
+    }
+
+
+   
+}
+function removeClickedClassFromAllButtons() {
+    document.querySelectorAll('button.clicked').forEach(button => {
+        button.classList.remove('clicked');
+    });
+}
+
+neki z animacijami, se ne dela
+
+
+
+socket.onopen = function(event) {
+    console.log("Socket se je odprl");
+    
+    // Start sending messages periodically once the connection is open
+    setInterval(function() {
+        if (socket.readyState === WebSocket.OPEN) {
+            socket.send("Hello");
+            console.log("Message sent: Hello");
+        } else {
+            console.error("WebSocket is not open. Cannot send message.");
+        }
+    }, 3000); // Send message every 3 seconds
+};
+
+to je da ko se nardi povezava, se zacne izvajat ta interval k posilja na server hello
+
+
+
+
+
+
+
+
+
+
+
+let socket = new WebSocket("wss://maticr.tenzor.live:7278/messageHub/Join/Matic");
+
+socket.onopen = function(event) {
+    console.log("Socket se je odprl");
+
+};
+
+socket.onmessage = function(event) { 
+    console.log(event.data)
+    if (event.data == "btns") {
+        document.querySelectorAll("button").forEach(btn => {
+            btn.style.backgroundColor = "red";
+        });
+    }
+};
+socket.onclose = function(event) { // kaj naj se izvrsi k je konec
+    if (event.wasClean) {
+        console.log(`Closed cleanly, code=${event.code} reason=${event.reason}`);
+    } else {
+        console.log('Connection died');
+    }
+};
+
+
+
+
+
+socket.onerror = function(error) {
+    console.error("WebSocket error observed:", error);
+};
+
+window.socket = socket; //da ga lohka globally uporablas

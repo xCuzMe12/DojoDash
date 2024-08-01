@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <script src="connection.js"></script>
+        <script src="main.js"></script>
+
+        <link rel="stylesheet" href="styles-folder/base-style.css">
+        <link rel="stylesheet" href="styles-folder/index.css">
+        <link rel="stylesheet" href="styles-folder/animations.css">
+        <link rel="stylesheet" href="styles-folder/02verification.css">
+        <link rel="stylesheet" href="styles-folder/08cards.css">
+        <link rel="stylesheet" href="styles-folder/09thank-you.css">
+        <link rel="stylesheet" href="styles-folder/13keycard-return.css">
+
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>KIOSK</title>
+    </head>
+    <body>
+        <div class="full-container">
+            <!-- IMG pride notri -->
+            <div class="header-container"> <!-- fixed header -->
+                <h1 style="font-size: 20em;">HEADER</h1>
+            </div>
+
+
+
+        <!-- 00index -->
+            <div id="page-00" class="content-container" data-page-type="static">
+                <div class="top-container"> 
+                    <div class="index-flags-container">
+                        <img src="images/slovenia-flag-png-large.png" alt="">
+                        <img src="images/united-kingdom-flag-png-large.png" alt="">
+                        <img src="images/germany-flag-png-large.png" alt="">
+                        <img src="images/italy-flag-png-large.png" alt="">
+                    </div>
+                </div>
+                <div class="main-container"> 
+                    <div class="check-in-out-container">
+                        <button id="00-check-in-btn" class="primary-btn" data-target-page="page-01">CHECK <br> IN</button>
+                        <button id="00-check-out-btn" class="primary-btn" data-target-page="page-11">CHECK <br> OUT</button>
+                    </div>
+                </div>
+                <div class="bottom-container"> 
+                </div>
+            </div>
+        <!-- 01booking -->
+            <div id="page-01" class="content-container" hidden data-page-type="input">
+                <div class="top-container"> 
+                    <h1>Please prepare your booking information.</h1>
+                </div>
+                <div class="main-container"> 
+                    <h2>Scan QR code</h2>
+                    <img src="images/renders/PointToQR.png" class="render" alt="">
+                    <h2>Or enter booking number</h2>
+                    <input class="input-bar" type="text" name="Enter booking number">
+                  <!-- <h2 style="color: rgb(128, 46, 46);">Wrong booking ID!</h2> -->
+                </div>
+                <div class="bottom-container"> 
+                    <button id="01-cancel" class="terciary-btn" data-target-page="page-00">Cancel</button>
+                    <button class="terciary-btn empty"></button>
+                    <button id="01-proceed" class="terciary-btn" data-extra-info="getInputValue" data-target-page="page-02">Proceed</button>
+
+                </div>
+            </div>
+        <!-- 02verification -->
+            <div id="page-02" class="content-container" hidden data-page-type="static">  
+                <div class="top-container">  
+                    <h1>Reservation Summary</h1>
+                </div>
+                <div class="main-container">  
+                    <div class="summary-div"> <!-- prilagodi glede na keri podatki bojo prikazani-->
+                        <h2>BOOKING INFO</h2>
+                        <h3>Owner of reservation:	</h3>
+                        <h3>Date until departure:    </h3>
+                        <h3>Date of reservation:    </h3>
+                        <h3>INFO:     </h3>
+                    </div>
+                </div>
+                <div class="bottom-container">  
+                    <button id="02-cancel" class="terciary-btn" data-target-page="page-01">Cancel</button>
+                    <button class="terciary-btn empty"></button>
+                    <button id="02-proceed" class="terciary-btn" data-target-page="page-03">Proceed</button>
+
+                </div>
+            </div>
+        <!-- 03guest-info -->    
+            <div id="page-03" class="content-container" hidden data-page-type="input">  
+                <div class="top-container">  
+                    <h1>Prepare your personal documents and begin ID verification.</h1>
+                </div>
+                <div class="main-container">  
+                    <div class="grid-list">
+                        <div class="list-element">
+                            <div class="item-info">
+                                <p>Andrej Hočevar</p>
+                            </div>
+                            <div class="element-confirmed">
+                                <?xml version="1.0" encoding="UTF-8"?>
+                                <svg class="svg-icon" xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 24 24">
+                                <path d="M18,12c-3.314,0-6,2.686-6,6s2.686,6,6,6,6-2.686,6-6-2.686-6-6-6Zm3.683,5.712l-2.703,2.614c-.452,.446-1.052,.671-1.653,.671s-1.203-.225-1.663-.674l-1.354-1.332c-.395-.387-.4-1.02-.014-1.414,.386-.395,1.019-.401,1.414-.014l1.354,1.331c.144,.142,.38,.139,.522-.002l2.713-2.624c.397-.381,1.031-.37,1.414,.029,.382,.398,.369,1.031-.029,1.414Zm-12.683-5.712c-3.309,0-6-2.691-6-6S5.691,0,9,0s6,2.691,6,6-2.691,6-6,6Zm0-9c-1.654,0-3,1.346-3,3s1.346,3,3,3,3-1.346,3-3-1.346-3-3-3ZM1.501,24c-.033,0-.067,0-.101-.003-.826-.056-1.452-.77-1.397-1.597,.296-4.456,3.883-8.058,8.343-8.377,.827-.059,1.544,.562,1.604,1.389s-.562,1.544-1.389,1.604c-2.975,.213-5.367,2.613-5.564,5.584-.053,.793-.712,1.4-1.495,1.4Z"/>
+                                </svg>
+                            </div>
+                            <div class="options-grid">
+                                <button >confirm</button>
+                                <button >remove</button>
+                                <button >edit</button>
+                            </div>
+                        </div>
+                        <div class="list-element"> </div>
+                        <div class="list-element"> </div>
+                        <div class="list-element"> </div>
+                        <div class="list-element"> </div>
+                        <div class="list-element"> </div>
+                        <div class="list-element"> </div>
+                    </div>
+                </div>
+                <div class="bottom-container">  
+                    <button id="03-cancel" class="terciary-btn" data-target-page="page-02">Cancel</button>
+                    <button id="03-addGuest" class="terciary-btn">Add guest</button>
+                    <button id="03-proceed" class="terciary-btn" data-target-page="page-05">Proceed</button>
+
+                </div> 
+            </div>
+        <!-- 04docscan -->
+            <div id="page-04" class="content-container" hidden data-page-type="input">  
+                <div class="top-container">  
+                    
+                </div>
+                <div class="main-container">  
+                    
+                </div>
+                <div class="bottom-container">  
+                    <button id="04-cancel" class="terciary-btn">Cancel</button>
+                    <button class="terciary-btn empty">MIDDLE</button>
+                    <button id="04-proceed" class="terciary-btn">Proceed</button>
+
+                </div>
+            </div>
+        <!-- 05config -->
+            <div id="page-05" class="content-container" hidden hidden data-page-type="static">  
+                <div class="top-container">  
+                    <h1>Room and guests information summary.</h1>
+                </div>
+                <div class="main-container">  
+                    
+                </div>
+                <div class="bottom-container">  
+                    <button id="05-cancel" class="terciary-btn" data-target-page="page-03">Cancel</button>
+                    <button id="05-changeGuests" class="terciary-btn" data-target-page="page-07">Change guests</button>
+                    <button id="05-proceed" class="terciary-btn" data-target-page="page-08">Proceed</button>
+
+                </div>
+            </div>
+        <!-- 06change-rooms -->
+            <div id="page-06" class="content-container" hidden data-page-type="input">  
+                <div class="top-container">  
+                    
+                </div>
+                <div class="main-container">  
+                    
+                </div>
+                <div class="bottom-container">  
+                    <button id="06-cancel" class="terciary-btn">Cancel</button>
+                    <button class="terciary-btn empty">MIDDLE</button>
+                    <button id="06-proceed" class="terciary-btn">Proceed</button>
+
+                </div>
+            </div>
+        <!-- 07change-guests -->
+            <div id="page-07" class="content-container" hidden data-page-type="static">  
+                <div class="top-container">  
+                    
+                </div>
+                <div class="main-container">  
+                    
+                </div>
+                <div class="bottom-container">  
+                    <button id="07-cancel" class="terciary-btn">Cancel</button>
+                    <button class="terciary-btn empty">MIDDLE</button>
+                    <button id="07-proceed" class="terciary-btn">Proceed</button>
+
+                </div>
+            </div>
+        <!-- 08cards -->
+            <div id="page-08" class="content-container" hidden data-page-type="input">  
+                <div class="top-container">  
+                    <h1>Key Card and info ticket issue</h1>
+                </div>
+                <div class="main-container">  
+                    <div class="instructions-box">
+                        <h3>1. Select guest and click collect. <br>
+                            2. Collect your key card. <br>
+                            3. Repeat for all guests <br>    
+                            4. Confirm collection of all keys. 
+                        </h3>
+                         <img  src="images/renders/PointToCardDispenser.png" alt="">
+                    </div>
+                    <div class="cards-collection">
+                    </div>
+                    
+                </div>
+                <div class="bottom-container">  
+                    <button id="08-cancel" class="terciary-btn" data-target-page="page-05">Cancel</button>
+                    <button class="terciary-btn empty">MIDDLE</button>
+                    <button id="08-proceed" class="terciary-btn" data-target-page="page-09">Proceed</button>
+
+                </div>
+            </div>
+        <!-- 09thank-you -->
+            <div id="page-09" class="content-container" hidden data-page-type="static">  
+                <div class="top-container">  
+                    
+                </div>
+                <div class="main-container">  
+                    <div class="thank-you-container">
+                        <h1>Thank you for choosing our hotel</h1>
+                        <p>We appreciate your business and hope you have a pleasant stay</p>
+                        <button id="09-end" class="secondary-btn" data-target-page="page-00">END</button>
+                    </div>
+                </div>
+                <div class="bottom-container">  
+
+                </div>
+            </div>
+
+        <!-- CHECK OUT -->
+        <!-- 11initiation -->
+            <div id="page-11" class="content-container" hidden data-page-type="input">  
+                <div class="top-container">  
+                    <h1>Welcome to the check-out process</h1>
+                </div>
+                <div class="main-container">  
+                    <h2>Please begin by scanning your key-card!</h2>
+                    <img class="render" src="images/renders/PointToCardScan.png" alt="">
+                </div>
+                <div class="bottom-container">  
+                    <button id="11-cancel" class="terciary-btn" data-target-page="page-00">Cancel</button>
+                    <button class="terciary-btn empty">MIDDLE</button>
+                    <button id="11-proceed" class="terciary-btn" data-target-page="page-12">za pomoc</button>
+
+                </div>
+            </div>
+        <!-- 12booking-review -->
+            <div id="page-12" class="content-container" hidden data-page-type="static">  
+                <div class="top-container">  
+                    
+                </div>
+                <div class="main-container">  
+                    <div class="overview-div">
+                        <h2>Overview</h2>
+                        <p >
+                           Booking ID: BK1234<br>
+                           No. of guests: 4 <br> 
+                           SUM:  124
+                        </p>
+                        <h2>Payment information</h2>
+                        <p>
+                            Credit card <br>
+                            Confirmed
+                        </p>
+                        <h2>Additional services</h2>
+                        <p>
+                            Meals: <br>
+                            Transportation:
+                        </p>
+                        <h2>Loyalty program</h2>
+                        <p>
+                            Member ID:<br>
+                            Points earned:
+                        </p>
+                    </div>
+                </div>
+                <div class="bottom-container">  
+                    <button id="12-cancel" class="terciary-btn" data-target-page="page-11">Cancel</button>
+                    <button class="terciary-btn empty">MIDDLE</button>
+                    <button id="12-proceed" class="terciary-btn" data-target-page="page-13">Proceed</button>
+
+                </div>
+            </div>
+        <!-- 13keycard-return -->
+            <div id="page-13" class="content-container" hidden data-page-type="input">  
+                <div class="top-container">  
+                    <h1>Please return your room key-cards</h1>
+                </div>
+                <div class="main-container">  
+                    <div class="card-return-div">
+                        <p>1. Click 'Return card' and insert the card. <br> 
+                            Repeat for each card <br>
+                           2. Click 'All cards returned' once finished.<br>
+                           3. Cards to return:  
+                        </p>
+                        <img class="render" src="images/renders/PointToCardDispenser.png" alt="">
+
+                    </div>
+                </div>
+                <div class="bottom-container">  
+                    <button id="13-cancel" class="terciary-btn" data-target-page="page-12">Cancel</button>
+                    <button id="13-return-card" class="terciary-btn">Return card</button>
+                    <button id="13-proceed" class="terciary-btn" data-target-page="page-14">All cards returned</button>
+                </div>
+            </div>
+        <!-- 14payment -->
+            <div id="page-14" class="content-container" hidden data-page-type="input">  
+                <div class="top-container">  
+                    <h1>Complete costs of your stay are:</h1>
+                </div>
+                <div class="main-container">  
+                    <div class="overview-div">
+                        <p >Mini-bar .. 32 EUR <br>
+                            Spa treatments .. 28 EUR <br>
+                            Total room charge .. 842 EUR <br>
+                            Tax .. 75 EUR <br><br>
+                            -------------------- <br>
+                            SUM: 1019 EUR
+                            </p>
+                            <p> Press button 'Complete Payment' <br>
+                            and <br>
+                            place a credit card on Pos terminal.
+                            </p>
+                    </div>
+                </div>
+                <div class="bottom-container">  
+                    <button id="14-cancel" class="terciary-btn" data-target-page="page-13">Cancel</button>
+                    <button class="terciary-btn empty">MIDDLE</button>
+                    <button id="14-proceed" class="terciary-btn" data-target-page="page-15">Proceed</button>
+
+                </div>
+            </div>
+        <!-- 15receipt -->
+            <div id="page-15" class="content-container" hidden data-page-type="input">  
+                <div class="top-container">  
+                    
+                </div>
+                <div class="main-container">  
+                    <button id="15-receipt" class="primary-btn" data-target-page="page-16">Print/Email receipt</button>
+                </div>
+                <div class="bottom-container">  
+
+                </div>
+            </div>
+        <!-- 16feedback -->
+            <div id="page-16" class="content-container" hidden data-page-type="input">  
+                <div class="top-container">  
+                    
+                </div>
+                <div class="main-container">  
+                    <button id="16-sumbit-feedback" class="primary-btn" data-target-page="page-00">Submit <br> Feedback</button>
+                </div>
+                <div class="bottom-container">  
+                    <button id="16-cancel" class="terciary-btn" data-target-page="page-15">Cancel</button>
+                    <button class="terciary-btn empty">MIDDLE</button>
+                    <button class="terciary-btn empty">Proceed</button>
+                </div>
+            </div>
+
+
+
+
+
+
+
+
+        <!-- settings-page-->
+        <div id="page-settings" class="content-container" hidden data-page-type="input">  
+            <div class="top-container">  
+                
+            </div>
+            <div class="main-container">  
+                <div class="options-display">
+                    <button id="settings" class="primary-btn settings-option" data-target-page="page-00">options <br> BACK </button>
+                    <button id="settings" class="primary-btn" data-target-page="page-00">options <br> BACK </button>
+                    <button id="settings" class="primary-btn" data-target-page="page-00">options <br> BACK </button>    
+                    <button id="settings" class="primary-btn" data-target-page="page-00">options <br> BACK </button>    
+                </div>
+            </div>
+            <div class="bottom-container">  
+                <button class="terciary-btn empty">Cancel</button>
+                <button class="terciary-btn">Save changes</button>
+                <button class="terciary-btn empty">Proceed</button>
+            </div>
+        </div>
+
+
+
+
+
+            <div class="footer-container">
+                <div class="ft">
+                    <button id="settings-button" class="settings-button" data-target-page="page-settings">
+                        <?xml version="1.0" encoding="UTF-8"?>
+                        <svg class="svg-icon" xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 24 24" width="512" height="512"><path d="M15,6c0-3.309-2.691-6-6-6S3,2.691,3,6s2.691,6,6,6,6-2.691,6-6Zm-6,3c-1.654,0-3-1.346-3-3s1.346-3,3-3,3,1.346,3,3-1.346,3-3,3Zm13,9c0-.281-.026-.556-.076-.823l1.522-.879-1.5-2.598-1.524,.88c-.416-.356-.897-.637-1.422-.824v-1.757h-3v1.757c-.526,.186-1.007,.468-1.422,.824l-1.524-.88-1.5,2.598,1.522,.879c-.049,.267-.076,.542-.076,.823s.026,.556,.076,.823l-1.522,.879,1.5,2.598,1.524-.88c.416,.356,.897,.637,1.422,.824v1.757h3v-1.757c.526-.186,1.007-.468,1.422-.824l1.524,.88,1.5-2.598-1.522-.879c.049-.267,.076-.542,.076-.823Zm-4.5,1.5c-.827,0-1.5-.673-1.5-1.5s.673-1.5,1.5-1.5,1.5,.673,1.5,1.5-.673,1.5-1.5,1.5ZM5.5,14h3.5v3h-3.5c-1.378,0-2.5,1.122-2.5,2.5v4.5H0v-4.5c0-3.033,2.467-5.5,5.5-5.5Z"/></svg>
+                    </button>
+                </div>
+                <div class="ft">
+                    <p class="error-txt" id="error-text"></p>  
+                </div>
+                <div class="ft">
+                    <div id="page-number-progress" class="progress-circle">
+                        <h1>--/--</h1>
+                    </div>
+                </div>
+            </div>
+
+
+
+        </div>
+
+
+
+
+        <script>
+            FirstPage('page-03');
+        </script>
+    </body>
+</html>
+

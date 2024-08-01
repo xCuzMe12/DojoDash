@@ -1,0 +1,13 @@
+.card-return-div {
+    width: 100%; height: fit-content;
+    display: flex; justify-content: space-around; align-items: center;
+
+
+}
+.card-return-div p {
+    font-size: 5rem;
+    line-height: 2em;
+}
+.card-return-div img {
+    width: 40%;
+}

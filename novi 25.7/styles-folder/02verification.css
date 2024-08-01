@@ -1,0 +1,12 @@
+.summary-div {
+    position: relative;
+    width: 100%;
+    height: 50%;
+    background-color: var(--receipt-background);
+    border-radius: 2em;
+    box-shadow: 10px 10px 10px rgba(80, 94, 93, 0.7);
+    display: flex; flex-direction: column; align-items: center;
+
+    animation: extendTab 0.5s;
+}
+.summary-div h2, .summary-div h3 {animation: showUp 1.5s;}

@@ -1,0 +1,19 @@
+.instructions-box {
+    width: 100%; height: 30%;
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 100px;
+}
+.instructions-box h3 {
+    line-height: 2em;
+}
+.instructions-box img {
+    width:  30%;
+    border-radius: 6em;
+    box-shadow: 10px 10px 10px rgba(80, 94, 93, 0.8);
+    border: 2px solid transparent;
+    
+}
+.cards-collection {
+    width: 100%; height: 100%;
+}
